@@ -23,6 +23,10 @@ app.config(function($routeProvider)  {
             templateUrl: 'pages/http/request.html',
             controller : 'httpController as httpCtrl'
         })
+        .when('/register', {
+            templateUrl: 'pages/register/register.html',
+            controller : 'registerController as regCtrl'
+        })
         // other
         .otherwise({ redirectTo: '/' });
 });
