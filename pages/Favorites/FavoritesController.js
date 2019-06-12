@@ -1,4 +1,4 @@
-// about controller
+// About controller
 angular.module("myApp")
 .controller("aboutController", function ($scope, $http) {
     // button click count
