@@ -8,15 +8,15 @@ app.config(function($routeProvider)  {
             // this is a template
             template: '<h1>This is the default route</h1>'
         })
-        // about
-        .when('/about', {
+        // About
+        .when('/About', {
             // this is a template url
-            templateUrl: 'pages/about/Favorites.html',
+            templateUrl: 'pages/About/Favorites.html',
             controller : 'aboutController as abtCtrl'
         })
-        // poi
-        .when('/poi', {
-            templateUrl: 'pages/poi/poi.html',
+        // POI
+        .when('/POI', {
+            templateUrl: 'pages/POI/POI.html',
             controller : 'poiController as poiCtrl'
         })
         .when('/httpRequest', {

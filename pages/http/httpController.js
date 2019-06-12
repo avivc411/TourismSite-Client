@@ -1,4 +1,4 @@
-// poi controller
+// POI controller
 angular.module("myApp")
 .controller("httpController", function ($scope,$http) {
     self = this;
