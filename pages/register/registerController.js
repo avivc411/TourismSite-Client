@@ -1,4 +1,4 @@
-// poi controller
+// register controller
 angular.module("myApp")
     .controller("registerController", function ($scope,$http) {
         self = this;
@@ -6,8 +6,10 @@ angular.module("myApp")
 
         $http.get('http://localhost:3000/getCountries').then(function(response){
             console.log('entered??')
-            $scope.userName=response.data;
-            console.log(response.data);
-
+            var temp=response.data;
+            $scope.countries=temp;
+           // $scope.countries=temp[0]["countryName"];
+            console.log(temp[0]["countryName"]);
         });
     });
+

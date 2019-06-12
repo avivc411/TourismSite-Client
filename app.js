@@ -24,7 +24,7 @@ app.config(function($routeProvider)  {
             controller : 'httpController as httpCtrl'
         })
         .when('/register', {
-            templateUrl: 'pages/register/register.html',
+            templateUrl: 'pages/register/draft.html',
             controller : 'registerController as regCtrl'
         })
         // other
