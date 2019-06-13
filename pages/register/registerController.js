@@ -44,14 +44,13 @@ angular.module("myApp")
 
         $scope.submitReg=function t() {
             console.log("ok submit");
-            let selectedCategories=[];
-            for(let i in $scope.selectionCategory){
+            var selectedCategories=[];
+            for(var i=0 ;i<$scope.selectionCategory.length;i++){
                 selectedCategories[i]={
                     name:$scope.selectionCategory[i]
                 }
             }
-
-            console.log(selectedCategories);
+            console.log("selected:",selectedCategories);
             var data = {
                 username: $scope.userNameGet,
                 password: $scope.passwordGet,
@@ -72,24 +71,13 @@ angular.module("myApp")
         .then(function successCallback(response) {
             console.log("success!")
     }, function errorCallback(response) {
-            alert("error");
+            alert("error - "+response.data);
+            console.log(response.data);
             console.log("error!")
     });
 
 
 
-
-            /*
-            .then(function (response) {
-            console.log('register try')
-            var temp = response.data;
-            if (temp)
-            console.log('success');
-            else
-                console.log('error');
-
-             */
-            //});
             console.log('done register try');
         }
     });

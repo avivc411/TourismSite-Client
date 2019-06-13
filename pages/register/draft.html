@@ -51,7 +51,7 @@
             <label>*** Country</label>
             <div class="col-sm-9">
               <!-- {{countries}}-->
-                <select ng-model="selectedName" ng-options="countryName.countryName for countryName in countries">
+                <select ng-model="selectedName" ng-init="selectedName=' '" ng-options="countryName.countryName for countryName in countries">
                 </select>
                 what is the country> {{selectedName.countryName}}
             <!--
@@ -75,7 +75,7 @@
 
 
         <div class="form-group" >
-        <select ng-model="selectedFirstQuest" ng-options="question.content for question in questions">
+        <select ng-model="selectedFirstQuest" ng-init="selectedFirstQuest=' '" ng-options="question.content for question in questions">
         </select>
         what is the question?> {{selectedFirstQuest.id}}
         </div>
@@ -90,7 +90,7 @@
 
 
         <div class="form-group" >
-            <select ng-model="selectedSecondQuest" ng-options="question.content for question in questions">
+            <select ng-model="selectedSecondQuest" ng-init="selectedSecondQuest=' '" ng-options="question.content for question in questions">
             </select>
             what is the question?> {{selectedSecondQuest.id}}
         </div>
