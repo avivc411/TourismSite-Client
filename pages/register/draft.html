@@ -50,19 +50,35 @@
         <div class="form-group">
             <label for="country" class="col-sm-3 control-label">*** Country</label>
             <div class="col-sm-9">
-                user is: {{countries}}
+              <!-- {{countries}}-->
                 <select ng-model="selectedName" ng-options="countryName.countryName for countryName in countries">
                 </select>
-
+                what is the country> {{selectedName.countryName}}
+            <!--
                 <table ng-controller="registerController" border="1">
                     <tr ng-repeat="x in countries">
                         <td>{{x.countryName}}</td>
                     </tr>
                 </table>
-
+                -->
                 <input type="text" id="Country" placeholder="Country" class="form-control" autofocus>
             </div>
         </div>
+
+        <div class="form-group" ng-repeat="c in categories">
+        <div class="action-checkbox">
+            <input id="chosenCategories" type="checkbox" value="{{c.name}}" ng-checked="selection.indexOf(c.name) > -1" ng-click="toggleSelection(c.name)" />
+            <label for="chosenCategories"></label>
+            {{c.name}}
+        </div>
+    </div>
+
+
+
+
+
+
+
 
 
         <div class="form-group">
