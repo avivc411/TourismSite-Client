@@ -1,4 +1,4 @@
-let app = angular.module('myApp', ["ngRoute"]);
+let app = angular.module('myApp', ["ngRoute", $window]);
 
 // config routes
 app.config(function($routeProvider)  {
@@ -40,3 +40,6 @@ app.config(function($routeProvider)  {
         // other
         .otherwise({ redirectTo: '/' });
 });
+
+let loggedIn=$window.sessionStorage.getItem("token");
+console.log(loggedIn);
