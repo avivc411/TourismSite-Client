@@ -44,6 +44,7 @@
                         <li><a href="#!POIS">View Points</a></li>
                         <li><a href="#!About">About</a></li>
                         <li><a href="#!Favorites" ng-show="loggedIn">Favorites Points</a></li>
+                        <li><a href="#!RetrievePassword">RetrievePassword</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#!" ng-hide="loggedIn">Login</a></li>
@@ -57,6 +58,39 @@
         <button ng-click="fun()">butt</button>
         <!-- This section changes as the hashbang changes -->
         <div ng-view></div>
-        <footer>three random points</footer>
+        <footer ng-init="threeRandomPoints()">Other Interesting Sites In Rome:
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a ng-ref="firstPoint.picture">
+                            <img ng-src="firstPoint.picture" alt="first" style="width:100%">
+                            <div class="caption">
+                                <p>{{firstPoint.name}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a ng-ref="firstPoint.picture">
+                            <img ng-src="firstPoint.picture" alt="first" style="width:100%">
+                            <div class="caption">
+                                <p>{{firstPoint.name}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a ng-ref="firstPoint.picture">
+                            <img ng-src="firstPoint.picture" alt="first" style="width:100%">
+                            <div class="caption">
+                                <p>{{firstPoint.name}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

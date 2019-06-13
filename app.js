@@ -3,7 +3,7 @@ let app = angular.module('myApp', ["ngRoute"]);
 // config routes
 app.config(function($routeProvider)  {
     $routeProvider
-        // homepage
+    // homepage
         .when('/', {
         })
         .when('/register', {
@@ -39,8 +39,29 @@ app.config(function($routeProvider)  {
         .otherwise({ redirectTo: '/' });
 });
 
-angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope) {
+angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope, $http) {
     $scope.fun=function () {
+    };
+
+    $scope.threeRandomPoints=function () {
+        $scope.randomPoints=[];
+        $http.get("http://localhost:3000/points/getAllPoints")
+            .then(function(response){
+                    let randomPoints=response.data.points;
+                    let first=getRandomNumber(randomPoints.length),
+                        second=getRandomNumber(randomPoints.length),
+                        third=getRandomNumber(randomPoints.length);
+                    while(second===first)
+                        second=getRandomNumber(randomPoints.length);
+                    while(third===first || third===second)
+                        third=getRandomNumber(randomPoints.length);
+                    $scope.firstPoint=randomPoints[first];
+                    $scope.secondPoint=randomPoints[second];
+                    $scope.thirdPoint=randomPoints[third];
+                },
+                function(response){
+                    alert(response.statusText);
+                })
     };
 
     $scope.logout = function(){
@@ -55,9 +76,13 @@ angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootSco
         $scope.user = $rootScope.user;
     }, true);
 
-   $scope.$watch(function() {
+    $scope.$watch(function() {
         return $window.sessionStorage.getItem("token");
     }, function() {
         $scope.loggedIn = $window.sessionStorage.getItem("token")!=null;
     }, true);
 });
+
+function getRandomNumber(range) {
+    return Math.floor(Math.random()*range);
+}
