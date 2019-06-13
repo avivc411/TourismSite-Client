@@ -1,4 +1,4 @@
-// POI controller
+// Retrieve password controller
 angular.module("myApp")
     .controller("RetrievePasswordController", function ($scope,$http) {
         self = this;

@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="pages/Login/Login.css" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-</body>
-</html>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="https://www.pngkey.com/png/detail/367-3670153_user-login-gif-images-for-login.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+        <form>
+            <input type="text" id="userName" class="fadeIn second" name="userName"  ng-model="userNameGet" placeholder="user name">
+            <input type="text" id="password" class="fadeIn third" name="password"   ng-model="passwordGet" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Log In"  ng-click="submitLogin()">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover">Forgot Password?</a>
+        </div>
+
+    </div>
+</div>
