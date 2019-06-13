@@ -2,7 +2,7 @@
 angular.module("myApp")
     .controller("registerController", function ($scope,$http) {
         self = this;
-        $scope.userName=12;
+
 
         $http.get('http://localhost:3000/getCountries').then(function(response){
             console.log('entered??')
@@ -11,7 +11,6 @@ angular.module("myApp")
             // $scope.countries=temp[0]["countryName"];
             console.log(temp[0]["countryName"]);
         });
-
 
         $http.get('http://localhost:3000/categories/getCategories').then(function(response){
             console.log('entered categories')
@@ -35,11 +34,51 @@ angular.module("myApp")
                     console.log($scope.selectionCategory);
                 }
             }
-
-
+        });
+        $http.get('http://localhost:3000/users/getAllQuestions').then(function(response){
+            console.log('entered questions')
+            var temp=response.data;
+            console.log(temp)
+            $scope.questions=temp;
         });
 
+        $scope.submitReg=function t() {
+            console.log("ok submit");
+            var selectedCategories=[];
+            for(var i=0 ;i<$scope.selectionCategory.length;i++){
+                selectedCategories[i]={
+                    name:$scope.selectionCategory[i]
+                }
+            }
+            console.log("selected:",selectedCategories);
+            var data = {
+                username: $scope.userNameGet,
+                password: $scope.passwordGet,
+                firstName: $scope.firstNameGet,
+                lastName: $scope.lastNameGet,
+                city: $scope.cityGet,
+                country: $scope.selectedName.countryName,
+                email: $scope.emailGet,
+                categories: selectedCategories,
+                question1: $scope.selectedFirstQuest.id,
+                answer1: $scope.firstAnsGet,
+                question2: $scope.selectedSecondQuest.id,
+                answer2: $scope.secAnsGet
+            }
+
+            $http.post('http://localhost:3000/users/register', data)
+
+        .then(function successCallback(response) {
+            console.log("success!")
+    }, function errorCallback(response) {
+            alert("error - "+response.data);
+            console.log(response.data);
+            console.log("error!")
+    });
 
 
+
+            console.log('done register try');
+        }
     });
 

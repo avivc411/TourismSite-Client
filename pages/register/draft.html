@@ -15,14 +15,14 @@
         <div class="form-group">
             <label for="userName" class="col-sm-3 control-label">User Name</label>
             <div class="col-sm-9">
-                <input type="text" id="userName" placeholder="User Name" class="form-control" autofocus>
+                <input type="text" id="userName" ng-model="userNameGet" placeholder="User Name" class="form-control" autofocus>
             </div>
         </div>
 
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password*</label>
             <div class="col-sm-9">
-                <input type="password" id="password" placeholder="Password" class="form-control">
+                <input type="password" id="password" ng-model="passwordGet" placeholder="Password" class="form-control">
             </div>
         </div>
 
@@ -30,28 +30,28 @@
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">First Name</label>
             <div class="col-sm-9">
-                <input type="text" id="firstName" placeholder="First Name" class="form-control" autofocus>
+                <input type="text" id="firstName" placeholder="First Name" ng-model="firstNameGet" class="form-control" autofocus>
             </div>
         </div>
         <div class="form-group">
             <label for="lastName" class="col-sm-3 control-label">Last Name</label>
             <div class="col-sm-9">
-                <input type="text" id="lastName" placeholder="Last Name" class="form-control" autofocus>
+                <input type="text" id="lastName" placeholder="Last Name" ng-model="lastNameGet" class="form-control" autofocus>
             </div>
         </div>
 
         <div class="form-group">
             <label for="city" class="col-sm-3 control-label">City</label>
             <div class="col-sm-9">
-                <input type="text" id="city" placeholder="City" class="form-control" autofocus>
+                <input type="text" id="city" placeholder="City" ng-model="cityGet"  class="form-control" autofocus>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="country" class="col-sm-3 control-label">*** Country</label>
+            <label>*** Country</label>
             <div class="col-sm-9">
               <!-- {{countries}}-->
-                <select ng-model="selectedName" ng-options="countryName.countryName for countryName in countries">
+                <select ng-model="selectedName" ng-init="selectedName=' '" ng-options="countryName.countryName for countryName in countries">
                 </select>
                 what is the country> {{selectedName.countryName}}
             <!--
@@ -61,7 +61,7 @@
                     </tr>
                 </table>
                 -->
-                <input type="text" id="Country" placeholder="Country" class="form-control" autofocus>
+
             </div>
         </div>
 
@@ -74,21 +74,43 @@
     </div>
 
 
+        <div class="form-group" >
+        <select ng-model="selectedFirstQuest" ng-init="selectedFirstQuest=' '" ng-options="question.content for question in questions">
+        </select>
+        what is the question?> {{selectedFirstQuest.id}}
+        </div>
+
+        <div class="form-group">
+            <label for="firstQuest" class="col-sm-3 control-label">first answer</label>
+            <div class="col-sm-9">
+                <input type="text" id="firstQuest" placeholder="insert your answer" ng-model="firstAnsGet" class="form-control" autofocus>
+            </div>
+        </div>
 
 
 
+        <div class="form-group" >
+            <select ng-model="selectedSecondQuest" ng-init="selectedSecondQuest=' '" ng-options="question.content for question in questions">
+            </select>
+            what is the question?> {{selectedSecondQuest.id}}
+        </div>
 
-
+        <div class="form-group">
+            <label for="secondQuest" class="col-sm-3 control-label">second answer</label>
+            <div class="col-sm-9">
+                <input type="text" id="secondQuest" placeholder="insert your answer" ng-model="secAnsGet" class="form-control" autofocus>
+            </div>
+        </div>
 
 
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email* </label>
             <div class="col-sm-9">
-                <input type="email" id="email" placeholder="Email" class="form-control" name= "email">
+                <input type="email" id="email" placeholder="Email" ng-model="emailGet" class="form-control" name= "email">
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block">Register</button>
+        <button type="submit" class="btn btn-primary btn-block" ng-click="submitReg()">Register</button>
     </form>
 </div>
 </body>
