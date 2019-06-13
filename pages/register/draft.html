@@ -67,7 +67,7 @@
 
         <div class="form-group" ng-repeat="c in categories">
         <div class="action-checkbox">
-            <input id="chosenCategories" type="checkbox" value="{{c.name}}" ng-checked="selection.indexOf(c.name) > -1" ng-click="toggleSelection(c.name)" />
+            <input id="chosenCategories" type="checkbox" value="{{c.name}}" ng-checked="selectionCategory.indexOf(c.name) > -1" ng-click="toggleSelectionCategory(c.name)" />
             <label for="chosenCategories"></label>
             {{c.name}}
         </div>
