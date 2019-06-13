@@ -3,9 +3,10 @@
         <title>My Website</title>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="App.css" rel="stylesheet">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
-    <body ng-app="myApp">
+    <body ng-app="myApp" ng-controller="AppCtrl">
         <!-- load angular -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.js"></script>
         <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
@@ -22,9 +23,6 @@
         <script src="pages/POIS/POISController.js"></script>
         <script src="pages/POI/POIController.js"></script>
         <script src="pages/Favorites/FavoritesController.js"></script>
-
-        <!-- the website -->
-        <h1>My Website</h1>
 
         <!-- menu -->
         <nav class="navbar navbar-default" role="navigation">
@@ -43,35 +41,22 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                     <ul class="nav navbar-nav">
-                        <li><a href="#" id="POISBtn">Points Of Interest</a></li>
-                        <li><a href="#" id="AboutBtn">About</a></li>
+                        <li><a href="#!POIS">View Points</a></li>
+                        <li><a href="#!About">About</a></li>
+                        <li><a href="#!Favorites" ng-show="loggedIn">Favorites Points</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" ng-hide="">Login</a></li>
-                        <li><a href="#">Register</a></li>
+                        <li><a href="#!" ng-hide="loggedIn">Login</a></li>
+                        <li><a href="#!" ng-hide="loggedIn">Register</a></li>
+                        <li><a href="#" ng-show="loggedIn" id="welcomeHref">Welcome {{user}}!</a></li>
+                        <li><a href="#" ng-show="loggedIn" ng-click="logout()">Logout</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <ul>
-            <li>
-                <a href="#!">Home</a>
-            </li>
-            <li>
-                <a href="#!About">About</a>
-            </li>
-            <li>
-                <a href="#!POI">POI</a>
-            </li>
-            <li>
-                <a href="#!httpRequest">POI</a>
-            </li>
-            <li>
-                <a href="#!register">register</a>
-            </li>
-        </ul>
-
+        <button ng-click="fun()">butt</button>
         <!-- This section changes as the hashbang changes -->
         <div ng-view></div>
+        <footer>three random points</footer>
     </body>
 </html>

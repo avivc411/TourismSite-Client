@@ -1,12 +1,10 @@
-let app = angular.module('myApp', ["ngRoute", $window]);
+let app = angular.module('myApp', ["ngRoute"]);
 
 // config routes
 app.config(function($routeProvider)  {
     $routeProvider
         // homepage
         .when('/', {
-            templateUrl: 'pages/DefaultView/DefaultView.html',
-            controller : 'DefaultViewController as DefaultViewCtrl'
         })
         .when('/register', {
             templateUrl: 'pages/register/draft.html',
@@ -41,5 +39,25 @@ app.config(function($routeProvider)  {
         .otherwise({ redirectTo: '/' });
 });
 
-let loggedIn=$window.sessionStorage.getItem("token");
-console.log(loggedIn);
+angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope) {
+    $scope.fun=function () {
+    };
+
+    $scope.logout = function(){
+        $window.sessionStorage.removeItem("token");
+        //$window.sessionStorage.clear();
+        $rootScope.user=undefined;
+    };
+
+    $scope.$watch(function() {
+        return $rootScope.user;
+    }, function() {
+        $scope.user = $rootScope.user;
+    }, true);
+
+   $scope.$watch(function() {
+        return $window.sessionStorage.getItem("token");
+    }, function() {
+        $scope.loggedIn = $window.sessionStorage.getItem("token")!=null;
+    }, true);
+});
