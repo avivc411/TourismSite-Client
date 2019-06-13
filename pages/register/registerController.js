@@ -2,7 +2,7 @@
 angular.module("myApp")
     .controller("registerController", function ($scope,$http) {
         self = this;
-        $scope.userName=12;
+
 
         $http.get('http://localhost:3000/getCountries').then(function(response){
             console.log('entered??')
@@ -11,7 +11,6 @@ angular.module("myApp")
             // $scope.countries=temp[0]["countryName"];
             console.log(temp[0]["countryName"]);
         });
-
 
         $http.get('http://localhost:3000/categories/getCategories').then(function(response){
             console.log('entered categories')
@@ -35,11 +34,57 @@ angular.module("myApp")
                     console.log($scope.selectionCategory);
                 }
             }
-
-
+        });
+        $http.get('http://localhost:3000/users/getAllQuestions').then(function(response){
+            console.log('entered questions')
+            var temp=response.data;
+            console.log(temp)
+            $scope.questions=temp;
         });
 
+        $scope.submitReg=function t() {
+            console.log("ok submit");
+            alert($scope.lastNameGet);
+            var data = {
+                username: $scope.userNameGet,
+                password: $scope.passwordGet,
+                firstName: $scope.firstNameGet,
+                lastName: $scope.lastNameGet,
+                city: "beersheva",
+                country: "Israel",
+                email: "yanis@gmail.com",
+                categories: [{name: "Fun"}, {name: "Museums"}],
+                question1: "1",
+                answer1: "yes",
+                question2: "2",
+                answer2: "yes"
+            }
 
 
+            $http.post('http://localhost:3000/users/register', data)
+
+        .then(function successCallback(response) {
+            console.log("success!")
+    }, function errorCallback(response) {
+            alert("error");
+            console.log("error!")
+    });
+
+
+
+
+            /*
+            .then(function (response) {
+            console.log('register try')
+            var temp = response.data;
+            if (temp)
+            console.log('success');
+            else
+                console.log('error');
+
+             */
+            //});
+            console.log('done register try');
+        }
     });
 
