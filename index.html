@@ -1,6 +1,9 @@
 <html>
     <head>
         <title>My Website</title>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
     <body ng-app="myApp">
         <!-- load angular -->
@@ -11,15 +14,45 @@
         <script src="app.js"></script>
 
         <!-- load controllers -->
-        <script src="pages/About/AboutController.js"></script>
-        <script src="pages/POI/POIController.js"></script>
-        <script src="pages/http/httpController.js"></script>
+        <script src="pages/DefaultView/DefaultViewController.js"></script>
         <script src="pages/register/registerController.js"></script>
+        <script src="pages/Login/LoginController.js"></script>
+        <script src="pages/RetrievePassword/RetrievePasswordController.js"></script>
+        <script src="pages/About/AboutController.js"></script>
+        <script src="pages/POIS/POISController.js"></script>
+        <script src="pages/POI/POIController.js"></script>
+        <script src="pages/Favorites/FavoritesController.js"></script>
 
         <!-- the website -->
         <h1>My Website</h1>
 
         <!-- menu -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" id="POISBtn">Points Of Interest</a></li>
+                        <li><a href="#" id="AboutBtn">About</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" ng-hide="">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
         <ul>
             <li>
                 <a href="#!">Home</a>
@@ -28,7 +61,7 @@
                 <a href="#!About">About</a>
             </li>
             <li>
-                <a href="#!poi">POI</a>
+                <a href="#!POI">POI</a>
             </li>
             <li>
                 <a href="#!httpRequest">POI</a>
