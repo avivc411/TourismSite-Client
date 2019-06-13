@@ -44,22 +44,28 @@ angular.module("myApp")
 
         $scope.submitReg=function t() {
             console.log("ok submit");
-            alert($scope.lastNameGet);
+            let selectedCategories=[];
+            for(let i in $scope.selectionCategory){
+                selectedCategories[i]={
+                    name:$scope.selectionCategory[i]
+                }
+            }
+
+            console.log(selectedCategories);
             var data = {
                 username: $scope.userNameGet,
                 password: $scope.passwordGet,
                 firstName: $scope.firstNameGet,
                 lastName: $scope.lastNameGet,
-                city: "beersheva",
-                country: "Israel",
-                email: "yanis@gmail.com",
-                categories: [{name: "Fun"}, {name: "Museums"}],
-                question1: "1",
-                answer1: "yes",
-                question2: "2",
-                answer2: "yes"
+                city: $scope.cityGet,
+                country: $scope.selectedName.countryName,
+                email: $scope.emailGet,
+                categories: selectedCategories,
+                question1: $scope.selectedFirstQuest.id,
+                answer1: $scope.firstAnsGet,
+                question2: $scope.selectedSecondQuest.id,
+                answer2: $scope.secAnsGet
             }
-
 
             $http.post('http://localhost:3000/users/register', data)
 
