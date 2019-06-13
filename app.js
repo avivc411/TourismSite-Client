@@ -11,13 +11,13 @@ app.config(function($routeProvider)  {
         // About
         .when('/About', {
             // this is a template url
-            templateUrl: 'pages/About/Favorites.html',
-            controller : 'aboutController as abtCtrl'
+            templateUrl: 'pages/About/About.html',
+            controller : 'AboutController as abtCtrl'
         })
         // POI
         .when('/POI', {
             templateUrl: 'pages/POI/POI.html',
-            controller : 'poiController as poiCtrl'
+            controller : 'POIController as poiCtrl'
         })
         .when('/httpRequest', {
             templateUrl: 'pages/http/request.html',
