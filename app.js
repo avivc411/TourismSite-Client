@@ -7,7 +7,7 @@ app.config(function($routeProvider)  {
         .when('/', {
         })
         .when('/register', {
-            templateUrl: 'pages/register/draft.html',
+            templateUrl: 'pages/register/register.html',
             controller : 'registerController as regCtrl'
         })
         .when('/Login', {

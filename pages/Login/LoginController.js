@@ -2,7 +2,9 @@
 angular.module("myApp")
     .controller("LoginController", function ($window,$scope, $http,$rootScope) {
         self=this;
+
         $scope.submitLogin=function f() {
+
             console.log("ok start login");
             var data = {
                 username: $scope.userNameGet,
