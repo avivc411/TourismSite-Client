@@ -14,7 +14,8 @@ angular.module("myApp")
     }, true);
 
 
-    $scope.rank=function f(){
+    // rank point
+    $scope.rank=function (){
     //alert ($window.sessionStorage.getItem("token"));
     var req = {
         method: 'POST',
@@ -37,4 +38,26 @@ angular.module("myApp")
     });
 }
 
+
+
+
+    // review point
+    $scope.sendReview=function (){
+        var req = {
+            method: 'POST',
+            url: 'http://localhost:3000/points/private/writeReviewOnPoint',
+            headers: {
+                'x-auth-token':$window.sessionStorage.getItem("token")
+            },
+            data: { pointName: $scope.point.name, review:$scope.review }
+        }
+        $http(req).then(function(response) {
+                alert("Rank done ");
+            console.log(response.data);
+        }, function errorCallback(response) {
+            alert("error - "+response.data );
+            console.log(response);
+            console.log("error!")
+        });
+    }
 });

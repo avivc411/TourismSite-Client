@@ -54,7 +54,7 @@
                                     <select ng-model="selectedRank" ng-init="selectedRank=' '" ng-options="rank for rank in ranks">
 
 
-                                        <textarea id="review" rows = "5" cols = "50" name = "description">
+                                        <textarea id="review" ng-model="review" rows = "5" cols = "50" name = "description">
 
                                         </textarea>
                                     </select>
@@ -64,7 +64,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                     <button type="button" class="btn btn-danger"  ng-click="rank()">Rank</button>
-                                    <button type="button" class="btn btn-danger"  ng-click="rank()">Send Review</button>
+                                    <button type="button" class="btn btn-danger"  ng-click="sendReview()">Send Review</button>
                                 </div>
                             </div>
                         </div>
