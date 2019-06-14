@@ -29,16 +29,19 @@
             </p>
 
             <div>
-                Reviews:{{reviews}}
+                Reviews: <br><br>
+                {{reviewFirst}} <br> <br>
+                {{reviewSecond}}
+                <br> <br> <br>
+
 
             </div>
             <!-- NOTE: TB3 form width default is 100%, so they expan to your <div> -->
             <form name="frmComment" id="frmComment">
                 <br>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Open modal
+                    RANK & REVIEW
                 </button>
-                <button type="button" class="btn btn-success" value="Submit" ng-click="rank()">RANK!</button>
                 <div class="container">
                     <!-- Button to Open the Modal -->
                     <!-- The Modal -->
