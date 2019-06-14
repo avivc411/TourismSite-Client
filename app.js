@@ -7,7 +7,7 @@ app.config(function($routeProvider)  {
         .when('/', {
         })
         .when('/register', {
-            templateUrl: 'pages/register/draft.html',
+            templateUrl: 'pages/register/register.html',
             controller : 'registerController as regCtrl'
         })
         .when('/Login', {
@@ -41,6 +41,7 @@ app.config(function($routeProvider)  {
 
 angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope, $http) {
     $rootScope.showPoint=function(point){
+        console.log("change");
         $rootScope.point=point;
         $rootScope.watched=true;
     };

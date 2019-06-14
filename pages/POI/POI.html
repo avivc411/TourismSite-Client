@@ -1,15 +1,69 @@
-<!-- css -->
-<style>
-    img {
-        height: 100px;
-    }
-</style>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<h2>POI</h2>
 
-<!-- display all cities -->
-<p ng-repeat="(id, city) in poiCtrl.cities">
-    City Name: <span ng-bind="city.name"></span><br>
-    City State: <span ng-bind="city.state"></span><br>
-    <img ng-src="{{ city.image }}">
-</p>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- Submitted March 7 @ 11:05pm  -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src={{point.picture}} class="img-responsive center-block" alt="">
+        </div>
+        <div class="col-md-8">
+            <h3>
+                {{point.name}}
+            </h3>
+        <p>
+            Description: {{point.desc}} <br>
+             Rank:{{point.rank}} <br>
+            Num Of Viewers:{{point.numOfViewers}}<br>
+            Category:{{point.category}}<br>
+        </p>
+            <!-- NOTE: TB3 form width default is 100%, so they expan to your <div> -->
+            <form name="frmComment" id="frmComment">
+                <br>
+                <button type="button" class="btn btn-success" value="Submit" ng-click="rank()">RANK!</button>
+
+                <div class="container">
+                    <!-- Button to Open the Modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Open modal
+                    </button>
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Rank a point</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Modal body..
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+
+
