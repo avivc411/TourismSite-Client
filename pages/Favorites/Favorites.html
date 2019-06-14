@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <h2>Some Title</h2>
+    </div>
+
+    <div class="topnav">
+        <div class="search-container" style="float:left">
+            <form action="">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search" ng-click="show()">search</i></button>
+            </form>
+        </div>
+        <p>Sort Points By:
+            <label>
+                <input type="radio" ng-click="sortRank()" ng-model="sortMethod" value="rank">
+                Rank
+            </label>
+            <label>
+                <input type="radio" ng-click="sortCat()" ng-model="sortMethod" value="category">
+                Categories
+            </label><br/>
+        </p>
+    </div>
+
+    <div class="paragraphs">
+        <div class="row" ng-repeat="point in points | orderBy: +sortMethod">
+            <div class="span4">
+                <a class="randomImage" href="#!POI">
+                    <img style="float:left" ng-src="{{point.picture}}" alt=""/>
+                </a>
+                <a class="randomImage" href="#!POI">
+                    <div class="content-heading"><h3>{{point.name}}</h3></div>
+                </a>
+                <p>{{point.desc}}</p>
+                <p>Rank: {{point.rank*5/100}}%</p>
+                <p>Category: {{point.category}}</p>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

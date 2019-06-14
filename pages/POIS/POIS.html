@@ -12,21 +12,27 @@
     </div>
 
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#contact">Contact</a>
-        <div class="search-container">
-            <form action="/action_page.php">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </div>
-    <div style="padding-left:16px">
-        <h2>Responsive Search Bar</h2>
-        <p>Navigation bar with a search box and a submit button inside of it.</p>
-        <p>Resize the browser window to see the responsive effect.</p>
+        <form>
+            <div class="search-container" style="float:left">
+                <label>
+                    <input type="text" placeholder="Search.." ng-model="searchName">
+                </label>
+                <button type="submit" ng-click="search()"><i class="">search</i></button>
+            </div>
+            <p>Sort Points By:
+                <label>
+                    <input type="radio" ng-click="sortRank($event)" value="rank" ng-model="checked">
+                    Rank
+                </label>
+                <label>
+                    <input type="radio" ng-click="sortCat($event)" value="category" ng-model="checked">
+                    Categories
+                </label><br/>
+            </p>
+        </form>
     </div>
 
+    <p>{{searchName}}</p>
 
     <div class="paragraphs">
         <div class="row" ng-repeat="point in points">
@@ -38,6 +44,8 @@
                     <div class="content-heading"><h3>{{point.name}}</h3></div>
                 </a>
                 <p>{{point.desc}}</p>
+                <p>Rank: {{point.rank*5/100}}%</p>
+                <p>Category: {{point.category}}</p>
                 <div style="clear:both"></div>
             </div>
         </div>
