@@ -17,9 +17,7 @@ angular.module("myApp")
             console.log(response.data);
         });
 
-
-
-
+        $scope.showRank = $window.sessionStorage.getItem("token")==null;
 
         $scope.$watch(function() {
             return $rootScope.point;
