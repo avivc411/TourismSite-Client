@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <title></title>
 </head>
 <body>
-<div class="imgDiv">
 
+
+<div class="container">
+    <div class="row">
+        <h2>Some Title</h2>
+    </div>
+    <form class="form-inline mr-auto">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
+    </form>
+    <div class="paragraphs">
+        <div class="row" ng-repeat="point in points">
+            <div class="span4">
+                <a class="randomImage" href="#!POI">
+                    <img style="float:left" ng-src="{{point.picture}}" alt=""/>
+                </a>
+                <a class="randomImage" href="#!POI">
+                    <div class="content-heading"><h3>{{point.name}}</h3></div>
+                </a>
+                <p>{{point.desc}}</p>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
-</html>
