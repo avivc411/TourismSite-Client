@@ -17,11 +17,24 @@ angular.module("myApp")
             console.log(response.data);
         });
 
+        // update the number of viewers
+        $http({
+            method: 'GET',
+            url: 'http://localhost:3000/points/getPoint/'+$rootScope.point.name,
+        }).then(function successCallback(response) {
+            console.log("num of viewers updated");
+        }, function errorCallback(response) {
+            console.log(response.data);
+        });
+
+
+
         $scope.$watch(function() {
             return $rootScope.point;
         }, function() {
             $scope.point = $rootScope.point;
             $scope.getReviews();
+            $scope.updateNumOfViewers();
         }, true);
 
         $scope.getReviews=function(){
@@ -50,6 +63,23 @@ angular.module("myApp")
                 $scope.reviews=[];
             });
         };
+
+
+        $scope.updateNumOfViewers=function(){
+            $http({
+                method: 'GET',
+                url: 'http://localhost:3000/points/getPoint/'+$rootScope.point.name,
+            }).then(function successCallback(response) {
+                console.log("num of viewers updated");
+            }, function errorCallback(response) {
+                console.log(response.data);
+            });
+
+        }
+
+
+
+
 
         // rank point
         $scope.rank=function (){
