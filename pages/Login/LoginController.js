@@ -13,20 +13,20 @@ angular.module("myApp")
             console.log(data.username);
             console.log(data.password);
             $http.post('http://localhost:3000/users/login', data)
-                .then(function successCallback(response) {
-                    console.log("RESPONSE:",response.data);
-                    if (response.data.message==undefined) {
-                        $window.sessionStorage.setItem("token", response.data);
-                        $rootScope.user=$scope.userNameGet;
-                        alert("Logged in!" );
-                    }
-                    else{
-                        alert("Error! " + response.data.message);
-                    }
-                }, function errorCallback(response) {
-                    alert("error "+ response.data);
+            .then(function successCallback(response) {
+                console.log("RESPONSE:",response.data);
+                if (response.data.message==undefined) {
+                    $window.sessionStorage.setItem("token", response.data);
+                    $rootScope.user=$scope.userNameGet;
+                    alert("Logged in!" );
+                }
+                else{
+                    alert("Error! " + response.data.message);
+                }
+            }, function errorCallback(response) {
+                alert("error "+ response.data);
 
-                });
-            console.log('done login try');
-        }
+            });
+        console.log('done login try');
+    }
     });
