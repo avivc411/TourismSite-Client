@@ -43,6 +43,11 @@ angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootSco
     $scope.fun=function () {
     };
 
+    $scope.showPoint=function(point){
+        $rootScope.point=point;
+        $scope.threeRandomPoints();
+    };
+
     $scope.threeRandomPoints=function () {
         $scope.randomPoints=[];
         $http.get("http://localhost:3000/points/getAllPoints")
