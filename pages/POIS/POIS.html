@@ -37,10 +37,10 @@
     <div class="paragraphs">
         <div class="row" ng-repeat="point in points">
             <div class="span4">
-                <a class="randomImage" href="#!POI">
+                <a class="randomImage" href="#!POI" ng-click="showPoint(point)">
                     <img style="float:left" ng-src="{{point.picture}}" alt=""/>
                 </a>
-                <a class="randomImage" href="#!POI">
+                <a class="randomImage" href="#!POI" ng-click="showPoint(point)">
                     <div class="content-heading"><h3>{{point.name}}</h3></div>
                 </a>
                 <p>{{point.desc}}</p>
