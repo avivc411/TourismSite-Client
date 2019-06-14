@@ -17,15 +17,7 @@ angular.module("myApp")
             console.log(response.data);
         });
 
-        // update the number of viewers
-        $http({
-            method: 'GET',
-            url: 'http://localhost:3000/points/getPoint/'+$rootScope.point.name,
-        }).then(function successCallback(response) {
-            console.log("num of viewers updated");
-        }, function errorCallback(response) {
-            console.log(response.data);
-        });
+
 
 
 
