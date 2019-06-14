@@ -9,7 +9,7 @@ angular.module("myApp")
             var data = {
                 username: $scope.userNameGet,
                 password: $scope.passwordGet
-            }
+            };
             console.log(data.username);
             console.log(data.password);
             $http.post('http://localhost:3000/users/login', data)

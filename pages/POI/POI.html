@@ -30,13 +30,14 @@
             <!-- NOTE: TB3 form width default is 100%, so they expan to your <div> -->
             <form name="frmComment" id="frmComment">
                 <br>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Open modal
+                </button>
                 <button type="button" class="btn btn-success" value="Submit" ng-click="rank()">RANK!</button>
 
                 <div class="container">
                     <!-- Button to Open the Modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                        Open modal
-                    </button>
+
                     <!-- The Modal -->
                     <div class="modal" id="myModal">
                         <div class="modal-dialog">
@@ -47,17 +48,24 @@
                                     <h4 class="modal-title">Rank a point</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    Modal body..
+                                    RANK & WRITE YOUR REVIEW HERE
+                                    <select ng-model="selectedRank" ng-init="selectedRank=' '" ng-options="rank for rank in ranks">
+
+
+                                        <textarea id="review" rows = "5" cols = "50" name = "description">
+
+                                        </textarea>
+                                    </select>
                                 </div>
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger"  ng-click="rank()">Rank</button>
+                                    <button type="button" class="btn btn-danger"  ng-click="rank()">Send Review</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>
