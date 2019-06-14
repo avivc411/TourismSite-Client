@@ -1,10 +1,40 @@
-// POI controller
+// Retrieve password controller
 angular.module("myApp")
-    .controller("RetrievePasswordController", function ($scope) {
+    .controller("RetrievePasswordController", function ($scope,$http) {
         self = this;
-        self.cities = {
-            1: {name:"Paris", state: "France", image: "https://media-cdn.tripadvisor.com/media/photo-s/0d/f5/7c/f2/eiffel-tower-priority.jpg"},
-            2: {name:"Jerusalem", state: "Israel", image: "https://cdni.rt.com/files/2017.12/article/5a3fe04efc7e93cd698b4567.jpg"},
-            3: {name:"London", state: "England", image: "http://www.ukguide.co.il/Photos/England/London/British-Royal-Tour.jpg"}
+
+        $http.get('http://localhost:3000/users/getAllQuestions').then(function(response){
+            var temp=response.data;
+            console.log(temp)
+            $scope.questions=temp;
+        });
+
+        $scope.submitRecovery=function sr() {
+            console.log("begin");
         }
+
+
+        $scope.submitRecovery=function sr() {
+            console.log("ok start recovery");
+            var data = {
+                username: $scope.userNameGet,
+                questionID: $scope.selectedQuest.id,
+                answer: $scope.AnsGet
+            }
+            $http.post('http://localhost:3000/users/restorePassword', data)
+                .then(function successCallback(response) {
+                    console.log("RESPONSE:",response.data[0].pass);
+                    alert("GOOD! Your password is: " +response.data[0].pass);
+                }, function errorCallback(response) {
+                    alert("error "+response.data);
+                    console.log(response.data);
+                    console.log("error!")
+                });
+
+            console.log('done recovery try');
+        }
+
+
+
+
     });
