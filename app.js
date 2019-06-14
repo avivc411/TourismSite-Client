@@ -41,6 +41,7 @@ app.config(function($routeProvider)  {
 
 angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope, $http) {
     $rootScope.showPoint=function(point){
+        console.log("change");
         $rootScope.point=point;
         $rootScope.watched=true;
     };
