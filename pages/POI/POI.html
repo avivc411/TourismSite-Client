@@ -21,12 +21,12 @@
             <h3>
                 {{point.name}}
             </h3>
-        <p>
-            Description: {{point.desc}} <br>
-             Rank:{{point.rank}} <br>
-            Num Of Viewers:{{point.numOfViewers}}<br>
-            Category:{{point.category}}<br>
-        </p>
+            <p>
+                Description: {{point.desc}} <br>
+                Rank:{{point.rank}} <br>
+                Num Of Viewers:{{point.numOfViewers}}<br>
+                Category:{{point.category}}<br>
+            </p>
 
             <div>
                 Reviews:{{reviews}}
@@ -39,15 +39,12 @@
                     Open modal
                 </button>
                 <button type="button" class="btn btn-success" value="Submit" ng-click="rank()">RANK!</button>
-
                 <div class="container">
                     <!-- Button to Open the Modal -->
-
                     <!-- The Modal -->
                     <div class="modal" id="myModal">
                         <div class="modal-dialog">
                             <div class="modal-content">
-
                                 <!-- Modal Header -->
                                 <div class="modal-header">
                                     <h4 class="modal-title">Rank a point</h4>
@@ -57,14 +54,10 @@
                                 <div class="modal-body">
                                     RANK & WRITE YOUR REVIEW HERE
                                     <select ng-model="selectedRank" ng-init="selectedRank=' '" ng-options="rank for rank in ranks">
-
-
                                         <textarea id="review" ng-model="review" rows = "5" cols = "50" name = "description">
-
                                         </textarea>
                                     </select>
                                 </div>
-
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -75,8 +68,7 @@
                         </div>
                     </div>
                 </div>
-
             </form>
-
-
-
+        </div>
+    </div>
+</div>
