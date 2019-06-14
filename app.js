@@ -40,12 +40,12 @@ app.config(function($routeProvider)  {
 });
 
 angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope, $http) {
-    $scope.fun=function () {
+    $rootScope.showPoint=function(point){
+        $rootScope.point=point;
+        $rootScope.watched=true;
     };
 
-    $scope.showPoint=function(point){
-        $rootScope.point=point;
-        $scope.threeRandomPoints();
+    $scope.fun=function () {
     };
 
     $scope.threeRandomPoints=function () {
@@ -85,6 +85,15 @@ angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootSco
         return $window.sessionStorage.getItem("token");
     }, function() {
         $scope.loggedIn = $window.sessionStorage.getItem("token")!=null;
+    }, true);
+
+    $scope.$watch(function() {
+        return $rootScope.watched;
+    }, function() {
+        if($rootScope.watched) {
+            $scope.randomPoints = $scope.threeRandomPoints();
+            $rootScope.watched = false;
+        }
     }, true);
 });
 
