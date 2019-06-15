@@ -7,7 +7,7 @@
 }
 
 .imgContainer{
-    width: 50%;
+    width: 45%;
     max-height: 100%;
     float: left;
 }
@@ -23,7 +23,7 @@ img {
 
 .poiContent{
     height: 100%;
-    width: 50%;
+    width: 45%;
     float: left;
     border-left: 6px solid #cccccc;
     padding-left: 2%;
