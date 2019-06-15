@@ -11,9 +11,9 @@
         <h1> Popular Points </h1> <br><br><br><br>
     </div>
     <div class="row">
-        <h3>
-            point: {{FirstPopularpoint.name}}
-        </h3>
+        <a href="#!POI" ng-click="showPoint(FirstPopularpoint)">
+            <div><h3>{{FirstPopularpoint.name}}</h3></div>
+        </a>
         <p>
             Description: {{FirstPopularpoint.desc}} <br>
             Rank:{{FirstPopularpoint.rank}} <br>
@@ -21,7 +21,9 @@
             Category:{{FirstPopularpoint.category}}<br>
 
         </p>
-        <img alt="" class="pic" src={{FirstPopularpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+        <a class="randomImage" href="#!POI" ng-click="showPoint(FirstPopularpoint)">
+            <img alt="" class="pic" src={{FirstPopularpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+        </a>
         <button ng-show="loggedIn && isFavorite(FirstPopularpoint)" ng-click="removeFromFavorites(FirstPopularpoint)" style="float: left">
             <span class="glyphicon glyphicon-heart-empty"></span>
         </button>
@@ -30,16 +32,18 @@
         </button>
     </div>
     <div class="row">
-        <h3>
-            point: {{SecondPopularpoint.name}}
-        </h3>
+        <a href="#!POI" ng-click="showPoint(SecondPopularpoint)">
+            <div><h3>{{SecondPopularpoint.name}}</h3></div>
+        </a>
         <p>
             Description: {{SecondPopularpoint.desc}} <br>
             Rank:{{SecondPopularpoint.rank}} <br>
             Num Of Viewers:{{SecondPopularpoint.numOfViewers}}<br>
             Category:{{SecondPopularpoint.category}}<br>
         </p>
-        <img alt="" class="pic" src={{SecondPopularpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+        <a class="randomImage" href="#!POI" ng-click="showPoint(SecondPopularpoint)">
+            <img alt="" class="pic" src={{SecondPopularpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+        </a>
         <button ng-show="loggedIn && isFavorite(SecondPopularpoint)" ng-click="removeFromFavorites(SecondPopularpoint)" style="float: left">
             <span class="glyphicon glyphicon-heart-empty"></span>
         </button>
@@ -52,9 +56,9 @@
             <h1> Saved Points </h1> <br><br><br><br>
         </div>
         <div class="" ng-hide="showFirst">
-            <h3>
-                First point: {{FirstSavedpoint.name}}
-            </h3>
+            <a href="#!POI" ng-click="showPoint(FirstSavedpoint)">
+                <div><h3>{{FirstSavedpoint.name}}</h3></div>
+            </a>
             <p>
                 Description: {{FirstSavedpoint.desc}} <br>
                 Rank:{{FirstSavedpoint.rank}} <br>
@@ -63,7 +67,9 @@
             </p>
         </div>
         <div class="" ng-hide="showFirst">
+            <a class="randomImage" href="#!POI" ng-click="showPoint(FirstSavedpoint)">
             <img alt="" class="pic" src={{FirstSavedpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+            </a>
             <button ng-show="!showFirst && loggedIn && isFavorite(FirstSavedpoint)" ng-click="removeFromFavorites(FirstSavedpoint)" style="float: left">
                 <span class="glyphicon glyphicon-heart-empty"></span>
             </button>
@@ -73,9 +79,9 @@
         </div>
 
         <div class="" ng-hide="showSecond">
-            <h3>
-                Second point: {{SecondSavedpoint.name}}
-            </h3>
+            <a href="#!POI" ng-click="showPoint(SecondSavedpoint)">
+                <div><h3>{{SecondSavedpoint.name}}</h3></div>
+            </a>
             <p>
                 Description: {{SecondSavedpoint.desc}} <br>
                 Rank:{{SecondSavedpoint.rank}} <br>
@@ -84,7 +90,9 @@
             </p>
         </div>
         <div class="" ng-hide="showSecond">
+            <a class="randomImage" href="#!POI" ng-click="showPoint(SecondSavedpoint)">
             <img alt="" class="pic" src={{SecondSavedpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+            </a>
             <button ng-show="!showSecond && loggedIn && isFavorite(SecondSavedpoint)" ng-click="removeFromFavorites(SecondSavedpoint)" style="float: left">
                 <span class="glyphicon glyphicon-heart-empty"></span>
             </button>
