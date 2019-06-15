@@ -21,7 +21,13 @@
             Category:{{FirstPopularpoint.category}}<br>
 
         </p>
-            <img alt="" class="pic" src={{FirstPopularpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+        <img alt="" class="pic" src={{FirstPopularpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+        <button ng-show="loggedIn && isFavorite(FirstPopularpoint)" ng-click="removeFromFavorites(FirstPopularpoint)" style="float: left">
+            <span class="glyphicon glyphicon-heart-empty"></span>
+        </button>
+        <button ng-hide="!loggedIn || isFavorite(FirstPopularpoint)" ng-click="addToFavorites(FirstPopularpoint)" style="float: left">
+            <span class="glyphicon glyphicon-heart"></span>
+        </button>
     </div>
     <div class="row">
         <h3>
@@ -33,13 +39,18 @@
             Num Of Viewers:{{SecondPopularpoint.numOfViewers}}<br>
             Category:{{SecondPopularpoint.category}}<br>
         </p>
-            <img alt="" class="pic" src={{SecondPopularpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+        <img alt="" class="pic" src={{SecondPopularpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+        <button ng-show="loggedIn && isFavorite(SecondPopularpoint)" ng-click="removeFromFavorites(SecondPopularpoint)" style="float: left">
+            <span class="glyphicon glyphicon-heart-empty"></span>
+        </button>
+        <button ng-hide="!loggedIn || isFavorite(SecondPopularpoint)" ng-click="addToFavorites(SecondPopularpoint)">
+            <span class="glyphicon glyphicon-heart"></span>
+        </button>
     </div>
-<div class="container">
-    <div>
-        <h1> Saved Points </h1> <br><br><br><br>
-    </div>
-
+    <div class="container">
+        <div>
+            <h1> Saved Points </h1> <br><br><br><br>
+        </div>
         <div class="" ng-hide="showFirst">
             <h3>
                 First point: {{FirstSavedpoint.name}}
@@ -49,26 +60,37 @@
                 Rank:{{FirstSavedpoint.rank}} <br>
                 Num Of Viewers:{{FirstSavedpoint.numOfViewers}}<br>
                 Category:{{FirstSavedpoint.category}}<br>
-
             </p>
         </div>
         <div class="" ng-hide="showFirst">
             <img alt="" class="pic" src={{FirstSavedpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+            <button ng-show="!showFirst && loggedIn && isFavorite(FirstSavedpoint)" ng-click="removeFromFavorites(FirstSavedpoint)" style="float: left">
+                <span class="glyphicon glyphicon-heart-empty"></span>
+            </button>
+            <button ng-hide="showFirst || !loggedIn || isFavorite(FirstSavedpoint)" ng-click="addToFavorites(FirstSavedpoint)" style="float: left">
+                <span class="glyphicon glyphicon-heart"></span>
+            </button>
         </div>
 
-    <div class="" ng-hide="showSecond">
-        <h3>
-            Second point: {{SecondSavedpoint.name}}
-        </h3>
-        <p>
-            Description: {{SecondSavedpoint.desc}} <br>
-            Rank:{{SecondSavedpoint.rank}} <br>
-            Num Of Viewers:{{SecondSavedpoint.numOfViewers}}<br>
-            Category:{{SecondSavedpoint.category}}<br>
-        </p>
+        <div class="" ng-hide="showSecond">
+            <h3>
+                Second point: {{SecondSavedpoint.name}}
+            </h3>
+            <p>
+                Description: {{SecondSavedpoint.desc}} <br>
+                Rank:{{SecondSavedpoint.rank}} <br>
+                Num Of Viewers:{{SecondSavedpoint.numOfViewers}}<br>
+                Category:{{SecondSavedpoint.category}}<br>
+            </p>
+        </div>
+        <div class="" ng-hide="showSecond">
+            <img alt="" class="pic" src={{SecondSavedpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
+            <button ng-show="!showSecond && loggedIn && isFavorite(SecondSavedpoint)" ng-click="removeFromFavorites(SecondSavedpoint)" style="float: left">
+                <span class="glyphicon glyphicon-heart-empty"></span>
+            </button>
+            <button ng-hide="showSecond || !loggedIn || isFavorite(SecondSavedpoint)" ng-click="addToFavorites(SecondSavedpoint)" style="float: left">
+                <span class="glyphicon glyphicon-heart"></span>
+            </button>
+        </div>
     </div>
-    <div class="" ng-hide="showSecond">
-        <img alt="" class="pic" src={{SecondSavedpoint.picture}} style="width:300px;height:200px;position:relative;left:20%">
-    </div>
-</div>
 </div>

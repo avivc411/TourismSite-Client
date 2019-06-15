@@ -45,17 +45,28 @@ app.config(function($routeProvider)  {
         .otherwise({ redirectTo: '/' });
 });
 
-angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope, $http) {
+angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope) {
+    $rootScope.isFavorite=function(point){
+        if($window.sessionStorage.getItem("token")===undefined
+            || point===undefined
+            || point.name===undefined)
+            return false;
+        $rootScope.favoritesPoints=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
+        let index = $rootScope.favoritesPoints.findIndex( element => element.name === point.name);
+        return index >= 0;
+    };
+
+    $rootScope.$watch(function() {
+        return $window.sessionStorage.getItem('favoritesPoints')!=null;
+    }, function() {
+        if($window.sessionStorage.getItem('favoritesPoints')!=null)
+            $rootScope.favoritesPoints=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
+    }, true);
+
     $rootScope.showPoint=function(point){
         console.log("change");
         $rootScope.point=point;
         $rootScope.watched=true;
-    };
-
-    $rootScope.isFavorite=function(point){
-        $rootScope.favoritesPoints=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
-        let index = $rootScope.favoritesPoints.findIndex( element => element.name === point.name);
-        return index >= 0;
     };
 
     $rootScope.removeFromFavorites = function(point){
