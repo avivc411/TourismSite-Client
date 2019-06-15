@@ -18,7 +18,6 @@ angular.module("myApp")
                    $scope.FirstPopularpoint = response.data.twoPopularPointsInUsersCategories[0];
                     $scope.SecondPopularpoint = response.data.twoPopularPointsInUsersCategories[1];
                     console.log("temp is: "+$scope.FirstPopularpoint);
-                    alert("good ");
                 }
                 else
                     alert("Failed "+response.data.message);
@@ -40,17 +39,31 @@ angular.module("myApp")
             data: {}
         };
 
-        var pointName;
+        var firstPointName;
+        var secondPointName;
+        $scope.showFirst=true;
+        $scope.showSecond=true;
+
         $http(reqest).then(function(response) {
-            if (response.data.message===undefined) {
-                console.log("saved point : "+response.data.points[0].point);
-                pointName=response.data.points[0].point;
-                getSavedPoints(pointName);
-                alert("good ");
+            console.log("response is: "+response.data.points.length);
+            if (response.data.points.length>0) {
+               if (response.data.points.length===2) {
+                   firstPointName = response.data.points[0].point;
+                   secondPointName = response.data.points[1].point;
+                   getFirstSavedPoints(firstPointName);
+                   getSecondSavedPoints(secondPointName);
+                   $scope.showFirst=false;
+                   $scope.showSecond=false;
+               }
+               else{
+                   firstPointName = response.data.points[0].point;
+                   getFirstSavedPoints(firstPointName);
+                   $scope.showFirst=false;
+                   alert("User has only 1 saved point");
+               }
             }
             else
-                alert("Failed "+response.data.message);
-            console.log(response.data);
+                alert("Failed - User didnt save any points yet");
         }, function errorCallback(response) {
             alert("error - "+response);
             console.log(response);
@@ -59,7 +72,7 @@ angular.module("myApp")
 
 
         // get the saved points of the user
-        getSavedPoints=function(pointName){
+        getFirstSavedPoints=function(pointName){
             $http({
                 method: 'GET',
                 url: 'http://localhost:3000/points/getPoint/'+pointName,
@@ -67,7 +80,21 @@ angular.module("myApp")
                 $scope.FirstSavedpoint=response.data.points[0];
                 console.log("FirstSaved: "+$scope.FirstSavedpoint);
                 console.log(response.data.points[0]);
-                alert("success!");
+            }, function errorCallback(response) {
+                console.log(response.data);
+            });
+        }
+
+
+        // get the saved points of the user
+        getSecondSavedPoints=function(pointName){
+            $http({
+                method: 'GET',
+                url: 'http://localhost:3000/points/getPoint/'+pointName,
+            }).then(function successCallback(response) {
+                $scope.SecondSavedpoint=response.data.points[0];
+                console.log("FirstSaved: "+$scope.SecondSavedpoint);
+                console.log(response.data.points[0]);
             }, function errorCallback(response) {
                 console.log(response.data);
             });

@@ -60,11 +60,11 @@
     <div>
         <h1> Saved Points </h1> <br><br><br><br>
     </div>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row" >
+        <div class="col-md-4" ng-hide="showFirst">
             <img alt="" class="img-responsive center-block" src={{FirstSavedpoint.picture}}>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" ng-hide="showFirst">
             <h3>
                 point: {{FirstSavedpoint.name}}
             </h3>
@@ -75,7 +75,26 @@
                 Category:{{FirstSavedpoint.category}}<br>
 
             </p>
-
         </div>
+    </div>
+
+
+    <div class="col-md-4" ng-hide="showSecond">
+        <img alt="" class="img-responsive center-block" src={{SecondSavedpoint.picture}}>
+    </div>
+    <div class="col-md-8" ng-hide="showSecond">
+        <h3>
+            Second point: {{SecondSavedpoint.name}}
+        </h3>
+        <p>
+            Description: {{SecondSavedpoint.desc}} <br>
+            Rank:{{SecondSavedpoint.rank}} <br>
+            Num Of Viewers:{{SecondSavedpoint.numOfViewers}}<br>
+            Category:{{SecondSavedpoint.category}}<br>
+
+        </p>
+
+    </div>
+</div>
     </div>
 </div>
