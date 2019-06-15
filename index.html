@@ -15,7 +15,7 @@
 <script src="app.js"></script>
 
 <!-- load controllers -->
-<script src="pages/DefaultView/DefaultViewController.js"></script>
+<script src="pages/AfterLogin/AfterLoginController.js"></script>
 <script src="pages/register/registerController.js"></script>
 <script src="pages/Login/LoginController.js"></script>
 <script src="pages/RetrievePassword/RetrievePasswordController.js"></script>
@@ -44,19 +44,17 @@
                 <li><a href="#!POIS">View Points</a></li>
                 <li><a href="#!About">About</a></li>
                 <li><a href="#!Favorites" ng-show="loggedIn">Favorites Points</a></li>
-                <li><a href="#!RetrievePassword">RetrievePassword</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#!Login" ng-hide="loggedIn">Login</a></li>
                 <li><a href="#!register" ng-hide="loggedIn">Register</a></li>
+                <li><a href="#!RetrievePassword" ng-hide="loggedIn">RetrievePassword</a></li>
                 <li><a href="#" ng-show="loggedIn" id="welcomeHref">Welcome {{user}}!</a></li>
                 <li><a href="#" ng-show="loggedIn" ng-click="logout()">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<button ng-click="fun()">butt</button>
-<!-- This section changes as the hashbang changes -->
 <div ng-view>
    <br>
 </div>

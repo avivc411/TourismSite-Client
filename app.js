@@ -35,6 +35,10 @@ app.config(function($routeProvider)  {
             templateUrl: 'pages/Favorites/Favorites.html',
             controller : 'FavoritesController as FavoritesCtrl'
         })
+        .when('/AfterLogin', {
+            templateUrl: 'pages/Favorites/AfterLogin.html',
+            controller : 'AfterLoginController as AfterLoginCtrl'
+        })
         // other
         .otherwise({ redirectTo: '/' });
 });

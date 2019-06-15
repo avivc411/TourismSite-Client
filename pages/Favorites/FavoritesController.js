@@ -36,18 +36,35 @@ angular.module("myApp")
         };
 
         $scope.savePoints = function () {
-            const req = {
+            let data = buildData($scope.points);
+            console.log(data);
+            let uri = 'http://localhost:3000/points/private/addPointsToFavorites';
+            $http({
                 method: 'PUT',
-                url: 'http://localhost:3000/points/private/addPointsToFavorites',
-                headers: {
-                    'x-auth-token':$window.sessionStorage.getItem("token")
-                }
-            };
-            let data= {
-                points:[]
-            };
-            angular.foreach($scope.points, function(point){
-
-            })
+                url: uri,
+                headers: {'x-auth-token':$window.sessionStorage.getItem("token")},
+                data: data
+            }).then(function(response){
+                console.log(response.data);
+                $window.sessionStorage.removeItem('favoritesPoints');
+                $window.sessionStorage.setItem('favoritesPoints',JSON.stringify($scope.points));
+            }, function(response){
+                console.log(response.data);
+            });
         };
     });
+
+function buildData(favoritesPoints) {
+    let data={
+        points:[]
+    };
+    let i=0;
+    angular.forEach(favoritesPoints, function(point){
+        data.points[i]={
+           name:point.name,
+           internalRank:i
+       };
+        i++;
+    });
+    return data;
+}
