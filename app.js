@@ -46,6 +46,8 @@ app.config(function($routeProvider)  {
 });
 
 angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope) {
+    $window.sessionStorage.setItem("toDelete", JSON.stringify([]));
+
     $rootScope.isFavorite=function(point){
         if($window.sessionStorage.getItem("token")===undefined
             || point===undefined
@@ -70,15 +72,26 @@ angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootSco
     };
 
     $rootScope.removeFromFavorites = function(point){
+        const toDelete=JSON.parse($window.sessionStorage.getItem("toDelete"));
+        toDelete.push(point);
+        $window.sessionStorage.setItem("toDelete", JSON.stringify(toDelete));
+
         $rootScope.favoritesPoints=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
         let index = $rootScope.favoritesPoints.findIndex( element => element.name === point.name);
         $rootScope.favoritesPoints.splice(index, 1);
+        console.log("deleted--------"+$rootScope.favoritesPoints);
+        $window.sessionStorage.removeItem('favoritesPoints');
         $window.sessionStorage.setItem('favoritesPoints', JSON.stringify($rootScope.favoritesPoints));
     };
 
     $rootScope.addToFavorites = function(point){
         $rootScope.favoritesPoints.push(point);
         $window.sessionStorage.setItem('favoritesPoints', JSON.stringify($rootScope.favoritesPoints));
+        const toDelete=JSON.parse($window.sessionStorage.getItem("toDelete"));
+        let index=toDelete.findIndex(element=> element.name=point.name);
+        if(index!==-1)
+            toDelete.splice(index, 1);
+        $window.sessionStorage.setItem("toDelete", JSON.stringify(toDelete));
     };
 
     $scope.logout = function(){

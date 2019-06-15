@@ -3,7 +3,13 @@ angular.module("myApp")
     .controller("FavoritesController", function ($window, $filter, $scope, $http) {
         self = this;
         $scope.points=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
-        console.log($scope.points);
+
+        $scope.$watch(function() {
+            return $window.sessionStorage.getItem("favoritesPoints");
+        }, function() {
+            if($window.sessionStorage.getItem("favoritesPoints")!=null)
+                $scope.points=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
+        }, true);
 
         $scope.sortRank = function(event){
             $scope.points=$filter('orderBy')($scope.points, 'rank');
@@ -28,7 +34,7 @@ angular.module("myApp")
 
         $scope.itemDown = function(point){
             let index = $scope.points.findIndex( element => element.name === point.name);
-            if(index<$scope.points.length){
+            if(index<$scope.points.length && index>=0){
                 let tmp=$scope.points[index+1];
                 $scope.points[index+1]=$scope.points[index];
                 $scope.points[index]=tmp;
@@ -36,8 +42,8 @@ angular.module("myApp")
         };
 
         $scope.savePoints = function () {
-            let data = buildData($scope.points);
-            console.log("saving: "+data);
+            let data = buildData($scope.points, JSON.parse($window.sessionStorage.getItem('toDelete')));
+            console.log("saving: "+data.points);
             let uri = 'http://localhost:3000/points/private/addPointsToFavorites';
             $http({
                 method: 'PUT',
@@ -54,9 +60,10 @@ angular.module("myApp")
         };
     });
 
-function buildData(favoritesPoints) {
+function buildData(favoritesPoints, toDelete) {
     let data={
-        points:[]
+        points:[],
+        toDelete:[]
     };
     let i=0;
     angular.forEach(favoritesPoints, function(point){
@@ -64,6 +71,13 @@ function buildData(favoritesPoints) {
            name:point.name,
            internalRank:i
        };
+        i++;
+    });
+    i=0;
+    angular.forEach(toDelete, function(point){
+        data.toDelete[i]={
+            name:point.name,
+        };
         i++;
     });
     return data;
