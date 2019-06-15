@@ -32,7 +32,16 @@
         </form>
     </div>
 
-    <p>{{searchName}}</p>
+    <p>Sort Points By:
+        <label>
+            <input type="radio" ng-click="AFunc()" value="rank" ng-value="val">
+            Rank
+        </label>
+        <label>
+            <input type="radio" ng-click="AFunc()" value="category" ng-value="!val">
+            Categories
+        </label><br/>
+    </p>
 
     <div class="paragraphs">
         <div class="row" ng-repeat="point in points">

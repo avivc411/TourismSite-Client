@@ -4,6 +4,7 @@ angular.module("myApp")
         self = this;
         $scope.points=[];
         $scope.searchName='';
+
         $http.get("http://localhost:3000/points/getAllPoints")
             .then(function (response) {
                 $scope.points=$filter('orderBy')(response.data.points, 'rank');
@@ -17,7 +18,6 @@ angular.module("myApp")
             if ($scope.checked === event.target.value)
                 $scope.checked = false
         };
-
 
         $scope.sortCat = function(event){
             $scope.points=$filter('orderBy')($scope.points, 'category');
