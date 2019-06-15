@@ -1,11 +1,9 @@
 // Login controller
 angular.module("myApp")
-    .controller("LoginController", function ($window,$scope, $http,$rootScope) {
+    .controller("LoginController", function ($window, $scope, $http, $rootScope, $filter) {
         self=this;
 
         $scope.submitLogin=function f() {
-
-            console.log("ok start login");
             var data = {
                 username: $scope.userNameGet,
                 password: $scope.passwordGet
@@ -15,9 +13,24 @@ angular.module("myApp")
             $http.post('http://localhost:3000/users/login', data)
             .then(function successCallback(response) {
                 console.log("RESPONSE:",response.data);
-                if (response.data.message==undefined) {
+                if (response.data.message===undefined) {
                     $window.sessionStorage.setItem("token", response.data);
                     $rootScope.user=$scope.userNameGet;
+
+                    const req = {
+                        method: 'GET',
+                        url: 'http://localhost:3000/points/private/getFavoritesPoints',
+                        headers: {
+                            'x-auth-token':$window.sessionStorage.getItem("token")
+                        }
+                    };
+
+                    $http(req).then(function(response) {
+                        $window.sessionStorage.setItem('favoritesPoints', JSON.stringify(response.data.points));
+                    }, function errorCallback(response) {
+                        alert(response.statusText);
+                    });
+
                     alert("Logged in!" );
                 }
                 else{

@@ -2,15 +2,8 @@
 angular.module("myApp")
     .controller("FavoritesController", function ($window, $filter, $scope, $http) {
         self = this;
-        $scope.points=[];
-        $scope.searchName='';
-        const req = {
-            method: 'GET',
-            url: 'http://localhost:3000/points/private/getFavoritesPoints',
-            headers: {
-                'x-auth-token':$window.sessionStorage.getItem("token")
-            }
-        };
+        $scope.points=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
+        console.log($scope.points);
 
         $scope.sortRank = function(event){
             $scope.points=$filter('orderBy')($scope.points, 'rank');
@@ -42,11 +35,19 @@ angular.module("myApp")
             }
         };
 
+        $scope.savePoints = function () {
+            const req = {
+                method: 'PUT',
+                url: 'http://localhost:3000/points/private/addPointsToFavorites',
+                headers: {
+                    'x-auth-token':$window.sessionStorage.getItem("token")
+                }
+            };
+            let data= {
+                points:[]
+            };
+            angular.foreach($scope.points, function(point){
 
-        $http(req).then(function(response) {
-            $scope.points=$filter('orderBy')(response.data.points, 'rank');
-            $scope.pointsBackup=$scope.points;
-        }, function errorCallback(response) {
-            alert(response.statusText);
-        });
+            })
+        };
     });
