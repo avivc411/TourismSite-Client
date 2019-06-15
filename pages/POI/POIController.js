@@ -84,7 +84,7 @@ angular.module("myApp")
 
             $http(req).then(function(response) {
                 if (response.data.message===undefined)
-                    alert("Rank done ");
+                    alert("Rank done -  grade of: "+$scope.selectedRank);
                 else
                     alert("Failed "+response.data.message);
                 console.log(response.data);
