@@ -44,7 +44,7 @@ angular.module("myApp")
                 if (reviews.length==2){
                     var uNameSec = reviews[1].user;
                     var uRevSec = reviews[1].review;
-                    var uDateSec = reviews[1].date;
+                    var uDateSec = reviews[1].date.substring(0,10);
                     let ansSec="  Reviewer: "+uNameSec+" Review: "+uRevSec+" Publish Date: "+uDateSec;
                     $scope.reviewSecond=ansSec;
                 }
