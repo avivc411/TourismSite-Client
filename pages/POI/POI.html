@@ -48,11 +48,14 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    RANK & WRITE YOUR REVIEW HERE
+                                    RANK Here
                                     <select ng-model="selectedRank" ng-init="selectedRank=' '" ng-options="rank for rank in ranks">
+                                    </select>
+                                    <span>Write your review in the box</span>
+                                        <div>
                                         <textarea id="review" ng-model="review" rows = "5" cols = "50" name = "description">
                                         </textarea>
-                                    </select>
+                                        </div>
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
