@@ -5,6 +5,8 @@ app.config(function($routeProvider)  {
     $routeProvider
     // homepage
         .when('/', {
+            templateUrl: 'pages/Home/Home.html',
+            controller : 'HomeController as HomeCtrl'
         })
         .when('/register', {
             templateUrl: 'pages/register/register.html',
@@ -50,40 +52,18 @@ angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootSco
         $rootScope.watched=true;
     };
 
-    $scope.fun=function () {
-    };
-
-    $scope.threeRandomPoints=function () {
-        $scope.randomPoints=[];
-        $http.get("http://localhost:3000/points/getAllPoints")
-            .then(function(response){
-                    let randomPoints=response.data.points;
-                    let first=getRandomNumber(randomPoints.length),
-                        second=getRandomNumber(randomPoints.length),
-                        third=getRandomNumber(randomPoints.length);
-                    while(second===first)
-                        second=getRandomNumber(randomPoints.length);
-                    while(third===first || third===second)
-                        third=getRandomNumber(randomPoints.length);
-                    $scope.firstPoint=randomPoints[first];
-                    $scope.secondPoint=randomPoints[second];
-                    $scope.thirdPoint=randomPoints[third];
-                },
-                function(response){
-                    alert(response.statusText);
-                })
-    };
-
     $scope.logout = function(){
         $window.sessionStorage.removeItem("token");
-        //$window.sessionStorage.clear();
+        $window.sessionStorage.clear();
         $rootScope.user=undefined;
     };
 
     $scope.$watch(function() {
         return $rootScope.user;
     }, function() {
-        $scope.user = $rootScope.user;
+        if($rootScope.user)
+            $scope.user = $rootScope.user;
+        else $scope.user='guest';
     }, true);
 
     $scope.$watch(function() {
@@ -93,15 +73,10 @@ angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootSco
     }, true);
 
     $scope.$watch(function() {
-        return $rootScope.watched;
+        return $window.sessionStorage.getItem('favoritesPoints');
     }, function() {
-        if($rootScope.watched) {
-            $scope.randomPoints = $scope.threeRandomPoints();
-            $rootScope.watched = false;
+        if($window.sessionStorage.getItem('favoritesPoints')!=null) {
+            $scope.favoritesPointsCount=JSON.parse($window.sessionStorage.getItem('favoritesPoints')).length;
         }
     }, true);
 });
-
-function getRandomNumber(range) {
-    return Math.floor(Math.random()*range);
-}
