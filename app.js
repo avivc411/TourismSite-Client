@@ -52,6 +52,24 @@ angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootSco
         $rootScope.watched=true;
     };
 
+    $rootScope.isFavorite=function(point){
+        $rootScope.favoritesPoints=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
+        let index = $rootScope.favoritesPoints.findIndex( element => element.name === point.name);
+        return index >= 0;
+    };
+
+    $rootScope.removeFromFavorites = function(point){
+        $rootScope.favoritesPoints=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
+        let index = $rootScope.favoritesPoints.findIndex( element => element.name === point.name);
+        $rootScope.favoritesPoints.splice(index, 1);
+        $window.sessionStorage.setItem('favoritesPoints', JSON.stringify($rootScope.favoritesPoints));
+    };
+
+    $rootScope.addToFavorites = function(point){
+        $rootScope.favoritesPoints.push(point);
+        $window.sessionStorage.setItem('favoritesPoints', JSON.stringify($rootScope.favoritesPoints));
+    };
+
     $scope.logout = function(){
         $window.sessionStorage.removeItem("token");
         $window.sessionStorage.clear();

@@ -32,8 +32,6 @@
         </form>
     </div>
 
-    <p>{{searchName}}</p>
-
     <div class="paragraphs">
         <div class="row" ng-repeat="point in points">
             <div class="span4">
@@ -44,10 +42,16 @@
                     <div class="content-heading"><h3>{{point.name}}</h3></div>
                 </a>
                 <p>Rank: {{point.rank*5/100}}%</p>
-                <p>Category: {{point.category}}</p>
+                <button ng-show="isFavorite(point)" ng-click="removeFromFavorites(point)">
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                </button>
+                <button ng-hide="isFavorite(point)" ng-click="addToFavorites(point)">
+                    <span class="glyphicon glyphicon-heart"></span>
+                </button>
                 <div style="clear:both"></div>
             </div>
         </div>
     </div>
 </div>
 </body>
+<p>Category: {{point.category}}</p>
