@@ -8,7 +8,6 @@
 
 <div class="container">
     <div class="row">
-
         <div class="">
             <h3>
                 {{point.name}}
@@ -24,6 +23,12 @@
                 {{reviewFirst}} <br> <br>
                 {{reviewSecond}}
                 <br> <br> <br>
+                <button ng-show="loggedIn && isFavorite(point)" ng-click="removeFromFavorites(point)">
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                </button>
+                <button ng-hide="!loggedIn || isFavorite(point)" ng-click="addToFavorites(point)">
+                    <span class="glyphicon glyphicon-heart"></span>
+                </button>
             </div>
             <div class="">
                 <img alt="" class="" src={{point.picture}} style="width:300px;height:200px;">
