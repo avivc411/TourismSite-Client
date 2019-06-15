@@ -34,7 +34,7 @@ angular.module("myApp")
 
         $scope.itemDown = function(point){
             let index = $scope.points.findIndex( element => element.name === point.name);
-            if(index<$scope.points.length && index>=0){
+            if(index<=$scope.points.length-2){
                 let tmp=$scope.points[index+1];
                 $scope.points[index+1]=$scope.points[index];
                 $scope.points[index]=tmp;
@@ -54,6 +54,7 @@ angular.module("myApp")
                 console.log(response.data);
                 $window.sessionStorage.removeItem('favoritesPoints');
                 $window.sessionStorage.setItem('favoritesPoints',JSON.stringify($scope.points));
+                alert("Favorites Saved Successfully");
             }, function(response){
                 console.log(response.data);
             });
