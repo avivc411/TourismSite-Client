@@ -1,6 +1,6 @@
 // POI controller
 angular.module("myApp")
-    .controller("POISController", function ($scope, $http, $filter) {
+    .controller("POISController", function ($scope, $http, $filter, $rootScope) {
         self = this;
         $scope.points=[];
         $scope.searchName='';
@@ -26,7 +26,6 @@ angular.module("myApp")
         };
 
         $scope.search = function () {
-            console.log($scope.pointsBackup);
             let obj=$filter('filter')($scope.pointsBackup, {'name':$scope.searchName});
             if(obj.length>0){
                 $scope.points=obj;
@@ -38,5 +37,5 @@ angular.module("myApp")
                 $scope.points=$scope.pointsBackup;
                 alert("No Points Found!");
             }
-        }
+        };
     });

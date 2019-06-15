@@ -37,7 +37,7 @@ angular.module("myApp")
 
         $scope.savePoints = function () {
             let data = buildData($scope.points);
-            console.log(data);
+            console.log("saving: "+data);
             let uri = 'http://localhost:3000/points/private/addPointsToFavorites';
             $http({
                 method: 'PUT',
