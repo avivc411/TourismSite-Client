@@ -1,6 +1,6 @@
 // register controller
 angular.module("myApp")
-    .controller("registerController", function ($scope,$http) {
+    .controller("registerController", function ($scope,$http,$location) {
         self = this;
 
 
@@ -70,6 +70,7 @@ angular.module("myApp")
 
         .then(function successCallback(response) {
             console.log("success!")
+            $location.path('/Login');
     }, function errorCallback(response) {
             alert("error - "+response.data);
             console.log(response.data);
