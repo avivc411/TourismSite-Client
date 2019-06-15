@@ -1,5 +1,5 @@
 // About controller
 angular.module("myApp")
-    .controller("DefaultViewController", function ($scope, $http) {
+    .controller("AfterLoginController", function ($scope, $http) {
 
     });
