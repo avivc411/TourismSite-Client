@@ -47,7 +47,9 @@ app.config(function($routeProvider)  {
 
 angular.module('myApp').controller('AppCtrl', function($scope, $window, $rootScope) {
     $rootScope.isFavorite=function(point){
-        if($window.sessionStorage.getItem("token")===null)
+        if($window.sessionStorage.getItem("token")===undefined
+            || point===undefined
+            || point.name===undefined)
             return false;
         $rootScope.favoritesPoints=JSON.parse($window.sessionStorage.getItem('favoritesPoints'));
         let index = $rootScope.favoritesPoints.findIndex( element => element.name === point.name);
