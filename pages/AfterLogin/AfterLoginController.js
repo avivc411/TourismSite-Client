@@ -98,8 +98,5 @@ angular.module("myApp")
             }, function errorCallback(response) {
                 console.log(response.data);
             });
-
         }
-
-
     });
