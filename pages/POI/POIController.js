@@ -36,8 +36,8 @@ angular.module("myApp")
                 //console.log("reviews: "+ $scope.reviews.length);
                 var uNameFirst = reviews[0].user;
                 var uRevFirst = reviews[0].review;
-                var uDateFirst = reviews[0].date;
-                let ansFirst="  User: "+uNameFirst+" Review: "+uRevFirst+" Date: "+uDateFirst;
+                var uDateFirst = reviews[0].date.substring(0,10);
+                let ansFirst="  Reviewer: "+uNameFirst+" Review: "+uRevFirst+" Publish Date: "+uDateFirst;
                 $scope.reviewFirst=ansFirst;
                 let ansSec="";
                 $scope.reviewSecond=ansSec;
@@ -45,7 +45,7 @@ angular.module("myApp")
                     var uNameSec = reviews[1].user;
                     var uRevSec = reviews[1].review;
                     var uDateSec = reviews[1].date;
-                    let ansSec="  User: "+uNameSec+" Review: "+uRevSec+" Date: "+uDateSec;
+                    let ansSec="  Reviewer: "+uNameSec+" Review: "+uRevSec+" Publish Date: "+uDateSec;
                     $scope.reviewSecond=ansSec;
                 }
 
