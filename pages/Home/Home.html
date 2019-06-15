@@ -1,0 +1,61 @@
+<html>
+<head>
+    <link rel="stylesheet" src="./Home.scc">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+<div class="alert alert-success" role="alert">
+    <strong>
+    <p>Hi! We see that you didn't logged in.</p>
+    <p>If you do have an account, please log in.</p>
+    <p>If you don't, consider register, it's simple AND free!</p>
+    </strong>
+</div>
+<footer ng-init="threeRandomPoints()"> Other Interesting Sites In Rome:
+    <div class="container-fluid" id="tourpackages-carousel">
+        <div class="row">
+            <div class="col-xs-18 col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <a class="randomImage" href="#!POI">
+                        <img ng-src="{{firstPoint.picture}}" alt="" ng-click="showPoint(firstPoint)" class=".img-rounded">
+                    </a>
+                    <div class="caption">
+                        <h4 ng-click="showPoint(firstPoint)"><a href="#!POI">{{firstPoint.name}}</a></h4>
+                        <p>{{firstPoint.desc}}</p>
+                        <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-18 col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <a class="randomImage" href="#!POI">
+                        <img ng-src="{{secondPoint.picture}}" alt="" ng-click="showPoint(secondPoint)" class=".img-rounded">
+                    </a>
+                    <div class="caption">
+                        <h4 ng-click="showPoint(secondPoint)"><a href="#!POI">{{secondPoint.name}}</a></h4>
+                        <p>{{secondPoint.desc}}</p>
+                        <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-18 col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <a class="randomImage" href="#!POI">
+                        <img ng-src="{{thirdPoint.picture}}" alt="" ng-click="showPoint(thirdPoint)" class=".img-rounded">
+                    </a>
+                    <div class="caption">
+                        <h4 ng-click="showPoint(firstPoint)"><a href="#!POI">{{thirdPoint.name}}</a></h4>
+                        <p>{{thirdPoint.desc}}</p>
+                        <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End row -->
+    </div><!-- End container -->
+</footer>
+</body>
+</html>

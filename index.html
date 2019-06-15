@@ -23,6 +23,7 @@
 <script src="pages/POIS/POISController.js"></script>
 <script src="pages/POI/POIController.js"></script>
 <script src="pages/Favorites/FavoritesController.js"></script>
+<script src="pages/Home/HomeController.js"></script>
 
 <!-- menu -->
 <nav class="navbar navbar-default" role="navigation">
@@ -41,15 +42,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
             <ul class="nav navbar-nav">
+                <li><a href="#!Home">
+                    <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
                 <li><a href="#!POIS">View Points</a></li>
                 <li><a href="#!About">About</a></li>
-                <li><a href="#!Favorites" ng-show="loggedIn">Favorites Points</a></li>
+                <li><a href="#!Favorites" ng-show="loggedIn">Favorites Points-{{favoritesPointsCount}}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#!Login" ng-hide="loggedIn">Login</a></li>
                 <li><a href="#!register" ng-hide="loggedIn">Register</a></li>
                 <li><a href="#!RetrievePassword" ng-hide="loggedIn">RetrievePassword</a></li>
-                <li><a href="#" ng-show="loggedIn" id="welcomeHref">Welcome {{user}}!</a></li>
+                <li><a href="#" id="welcomeHref">Welcome {{user}}!</a></li>
                 <li><a href="#" ng-show="loggedIn" ng-click="logout()">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -58,51 +63,5 @@
 <div ng-view>
    <br>
 </div>
-
-<footer ng-init="threeRandomPoints()"> Other Interesting Sites In Rome:
-    <div class="container-fluid" id="tourpackages-carousel">
-        <div class="row">
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <div class="col-xs-18 col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <a class="randomImage" href="#!POI">
-                        <img ng-src="{{firstPoint.picture}}" alt="" ng-click="showPoint(firstPoint)" class=".img-rounded">
-                    </a>
-                    <div class="caption">
-                        <h4 ng-click="showPoint(firstPoint)"><a href="#!POI">{{firstPoint.name}}</a></h4>
-                        <p>{{firstPoint.desc}}</p>
-                        <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-18 col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <a class="randomImage" href="#!POI">
-                        <img ng-src="{{secondPoint.picture}}" alt="" ng-click="showPoint(secondPoint)" class=".img-rounded">
-                    </a>
-                    <div class="caption">
-                        <h4 ng-click="showPoint(secondPoint)"><a href="#!POI">{{secondPoint.name}}</a></h4>
-                        <p>{{secondPoint.desc}}</p>
-                        <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-18 col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <a class="randomImage" href="#!POI">
-                        <img ng-src="{{thirdPoint.picture}}" alt="" ng-click="showPoint(thirdPoint)" class=".img-rounded">
-                    </a>
-                    <div class="caption">
-                        <h4 ng-click="showPoint(firstPoint)"><a href="#!POI">{{thirdPoint.name}}</a></h4>
-                        <p>{{thirdPoint.desc}}</p>
-                        <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a></p>
-                    </div>
-                </div>
-            </div>
-        </div><!-- End row -->
-    </div><!-- End container -->
-</footer>
 </body>
 </html>
