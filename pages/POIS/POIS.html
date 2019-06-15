@@ -33,6 +33,12 @@
         </form>
     </div>
 
+    <div class="casual">
+        <label style="margin:2% 0 0;">Filter By Category:</label>
+        <select ng-init="selectedName=' '" ng-model="selectedName" ng-options="category.name for category in categories" style="position:relative;left:2%;width:40%"></select>
+        <button ng-click="filterCat()" style="position: relative; margin-left: 5%">Filter</button>
+    </div>
+
     <div class="paragraphs">
         <div class="row" ng-repeat="point in points">
             <div class="poiContainer">

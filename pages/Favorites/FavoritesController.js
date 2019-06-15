@@ -54,6 +54,7 @@ angular.module("myApp")
                 console.log(response.data);
                 $window.sessionStorage.removeItem('favoritesPoints');
                 $window.sessionStorage.setItem('favoritesPoints',JSON.stringify($scope.points));
+                alert("Favorites Saved Successfully");
             }, function(response){
                 console.log(response.data);
             });
