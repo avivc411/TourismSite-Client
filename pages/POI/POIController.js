@@ -106,7 +106,7 @@ angular.module("myApp")
                 data: { pointName: $scope.point.name, review:$scope.review }
             };
             $http(req).then(function(response) {
-                alert("Rank done ");
+                alert("Review done ");
                 console.log(response.data);
             }, function errorCallback(response) {
                 alert("error - "+response.data );
