@@ -8,35 +8,39 @@
 
 <div class="container">
     <div class="row">
-        <h2>Some Title</h2>
+        <h2>Your Favorite Points</h2>
     </div>
 
     <div class="topnav">
-        <div class="search-container" style="float:left">
-            <form action="">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search" ng-click="show()">search</i></button>
-            </form>
-        </div>
-        <p>Sort Points By:
-            <label>
-                <input type="radio" ng-click="sortRank()" ng-model="sortMethod" value="rank">
-                Rank
-            </label>
-            <label>
-                <input type="radio" ng-click="sortCat()" ng-model="sortMethod" value="category">
-                Categories
-            </label><br/>
-        </p>
+        <form>
+            <p>Sort Points By:
+                <label>
+                    <input type="radio" ng-click="sortRank($event)" value="rank" ng-model="checked">
+                    Rank
+                </label>
+                <label>
+                    <input type="radio" ng-click="sortCat($event)" value="category" ng-model="checked">
+                    Categories
+                </label><br/>
+            </p>
+        </form>
     </div>
 
     <div class="paragraphs">
-        <div class="row" ng-repeat="point in points | orderBy: +sortMethod">
+        <div class="row" ng-repeat="point in points">
             <div class="span4">
-                <a class="randomImage" href="#!POI">
+                <div style="float:left">
+                <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="itemUp(point)">
+                    <span class="glyphicon glyphicon-chevron-up"></span>
+                </button>
+                <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="itemDown(point)">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                </div>
+                <a class="randomImage" href="#!POI" ng-click="showPoint(point)">
                     <img style="float:left" ng-src="{{point.picture}}" alt=""/>
                 </a>
-                <a class="randomImage" href="#!POI">
+                <a class="randomImage" href="#!POI" ng-click="showPoint(point)">
                     <div class="content-heading"><h3>{{point.name}}</h3></div>
                 </a>
                 <p>{{point.desc}}</p>
