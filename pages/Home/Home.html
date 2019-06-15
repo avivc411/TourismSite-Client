@@ -25,10 +25,10 @@
                         <h4 ng-click="showPoint(firstPoint)"><a href="#!POI">{{firstPoint.name}}</a></h4>
                         <p>{{firstPoint.desc}}</p>
                     </div>
-                    <button ng-show="isFavorite(point) && loggedIn" ng-click="removeFromFavorites(point)">
+                    <button ng-show="loggedIn && isFavorite(point)" ng-click="removeFromFavorites(point)">
                         <span class="glyphicon glyphicon-heart-empty"></span>
                     </button>
-                    <button ng-hide="isFavorite(point) || !loggedIn" ng-click="addToFavorites(point)">
+                    <button ng-hide="!loggedIn || isFavorite(point)" ng-click="addToFavorites(point)">
                         <span class="glyphicon glyphicon-heart"></span>
                     </button>
                 </div>
@@ -43,10 +43,10 @@
                         <h4 ng-click="showPoint(secondPoint)"><a href="#!POI">{{secondPoint.name}}</a></h4>
                         <p>{{secondPoint.desc}}</p>
                     </div>
-                    <button ng-show="isFavorite(point) && loggedIn" ng-click="removeFromFavorites(point)">
+                    <button ng-show="loggedIn && isFavorite(point)" ng-click="removeFromFavorites(point)">
                         <span class="glyphicon glyphicon-heart-empty"></span>
                     </button>
-                    <button ng-hide="isFavorite(point) || !loggedIn" ng-click="addToFavorites(point)">
+                    <button ng-hide="!loggedIn || isFavorite(point)" ng-click="addToFavorites(point)">
                         <span class="glyphicon glyphicon-heart"></span>
                     </button>
                 </div>
@@ -61,10 +61,10 @@
                         <h4 ng-click="showPoint(firstPoint)"><a href="#!POI">{{thirdPoint.name}}</a></h4>
                         <p>{{thirdPoint.desc}}</p>
                     </div>
-                    <button ng-show="isFavorite(point) && loggedIn" ng-click="removeFromFavorites(point)">
+                    <button ng-show="loggedIn && isFavorite(point)" ng-click="removeFromFavorites(point)">
                         <span class="glyphicon glyphicon-heart-empty"></span>
                     </button>
-                    <button ng-hide="isFavorite(point) || !loggedIn" ng-click="addToFavorites(point)">
+                    <button ng-hide="!loggedIn || isFavorite(point)" ng-click="addToFavorites(point)">
                         <span class="glyphicon glyphicon-heart"></span>
                     </button>
                 </div>

@@ -30,12 +30,12 @@
         <div class="row" ng-repeat="point in points">
             <div class="span4">
                 <div style="float:left">
-                <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="itemUp(point)">
-                    <span class="glyphicon glyphicon-chevron-up"></span>
-                </button>
-                <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="itemDown(point)">
-                    <span class="glyphicon glyphicon-chevron-down"></span>
-                </button>
+                    <button ng-show="loggedIn && isFavorite(point)" ng-click="removeFromFavorites(point)">
+                        <span class="glyphicon glyphicon-heart-empty"></span>
+                    </button>
+                    <button ng-hide="!loggedIn || isFavorite(point)" ng-click="addToFavorites(point)">
+                        <span class="glyphicon glyphicon-heart"></span>
+                    </button>
                 </div>
                 <a class="randomImage" href="#!POI" ng-click="showPoint(point)">
                     <img style="float:left" ng-src="{{point.picture}}" alt=""/>
