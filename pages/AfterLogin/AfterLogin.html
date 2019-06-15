@@ -13,66 +13,41 @@
 
 
 <div class="container">
+    <div>
+        <h1> Popular Points </h1> <br><br><br><br>
+    </div>
     <div class="row">
         <div class="col-md-4">
-            <img alt="" class="img-responsive center-block" src={{point.picture}}>
+            <img alt="" class="img-responsive center-block" src={{FirstPopularpoint.picture}}>
         </div>
         <div class="col-md-8">
             <h3>
-                {{point.name}}
+                point: {{FirstPopularpoint.name}}
             </h3>
             <p>
-                Description: {{point.desc}} <br>
-                Rank:{{point.rank}} <br>
-                Num Of Viewers:{{point.numOfViewers}}<br>
-                Category:{{point.category}}<br>
+                Description: {{FirstPopularpoint.desc}} <br>
+                Rank:{{FirstPopularpoint.rank}} <br>
+                Num Of Viewers:{{FirstPopularpoint.numOfViewers}}<br>
+                Category:{{FirstPopularpoint.category}}<br>
+
             </p>
 
-            <div>
-                Reviews: <br><br>
-                {{reviewFirst}} <br> <br>
-                {{reviewSecond}}
-                <br> <br> <br>
 
+    <div class="row">
 
-            </div>
-            <!-- NOTE: TB3 form width default is 100%, so they expan to your <div> -->
-            <form id="frmComment" name="frmComment">
-                <br>
-
-                <button class="btn btn-primary" data-target="#myModal" data-toggle="modal" ng-hide="showRank" type="button">
-                    RANK & REVIEW
-                </button>
-                <div class="container">
-                    <!-- Button to Open the Modal -->
-                    <!-- The Modal -->
-                    <div class="modal" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Rank a point</h4>
-                                    <button class="close" data-dismiss="modal" type="button">&times;</button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    RANK & WRITE YOUR REVIEW HERE
-                                    <select ng-init="selectedRank=' '" ng-model="selectedRank" ng-options="rank for rank in ranks">
-                                        <textarea cols = "50" id="review" name = "description" ng-model="review" rows = "5">
-                                        </textarea>
-                                    </select>
-                                </div>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button class="btn btn-danger" data-dismiss="modal" type="button">Close</button>
-                                    <button class="btn btn-danger" ng-click="rank()"  type="button">Rank</button>
-                                    <button class="btn btn-danger" ng-click="sendReview()"  type="button">Send Review</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+        <div class="col-md-4">
+            <img alt="" class="img-responsive center-block" src={{SecondPopularpoint.picture}}>
+        </div>
+        <div class="col-md-8">
+            <h3>
+                point: {{SecondPopularpoint.name}}
+            </h3>
+            <p>
+                Description: {{SecondPopularpoint.desc}} <br>
+                Rank:{{SecondPopularpoint.rank}} <br>
+                Num Of Viewers:{{SecondPopularpoint.numOfViewers}}<br>
+                Category:{{SecondPopularpoint.category}}<br>
+            </p>
         </div>
     </div>
-</div>
+
