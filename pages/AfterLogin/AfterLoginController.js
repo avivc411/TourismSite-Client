@@ -2,11 +2,8 @@
 angular.module("myApp")
     .controller("AfterLoginController", function ($window, $scope, $http, $rootScope) {
         self = this;
-       var u= $rootScope.user;
-        alert ("user is:"+u);
 
-
-
+        // get popular points
             var req = {
                 method: 'GET',
                 url: 'http://localhost:3000/categories/private/getPopular',
@@ -33,7 +30,49 @@ angular.module("myApp")
             });
 
 
+        // get saved points
+        var reqest = {
+            method: 'GET',
+            url: 'http://localhost:3000/points/private/getLastTwoPoints',
+            headers: {
+                'x-auth-token':$window.sessionStorage.getItem("token")
+            },
+            data: {}
+        };
 
+        var pointName;
+        $http(reqest).then(function(response) {
+            if (response.data.message===undefined) {
+                console.log("saved point : "+response.data.points[0].point);
+                pointName=response.data.points[0].point;
+                getSavedPoints(pointName);
+                alert("good ");
+            }
+            else
+                alert("Failed "+response.data.message);
+            console.log(response.data);
+        }, function errorCallback(response) {
+            alert("error - "+response);
+            console.log(response);
+            console.log("error!")
+        });
+
+
+        // get the saved points of the user
+        getSavedPoints=function(pointName){
+            $http({
+                method: 'GET',
+                url: 'http://localhost:3000/points/getPoint/'+pointName,
+            }).then(function successCallback(response) {
+                $scope.FirstSavedpoint=response.data.points[0];
+                console.log("FirstSaved: "+$scope.FirstSavedpoint);
+                console.log(response.data.points[0]);
+                alert("success!");
+            }, function errorCallback(response) {
+                console.log(response.data);
+            });
+
+        }
 
 
     });
