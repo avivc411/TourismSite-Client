@@ -1,5 +1,5 @@
 .poiContainer{
-    width: 60%;
+    width: 100%;
     height: 40%;
     padding: 0.2%;
     border-style: groove;
@@ -7,7 +7,7 @@
 }
 
 .imgContainer{
-    width: 70%;
+    width: 50%;
     max-height: 100%;
     float: left;
 }
@@ -23,7 +23,12 @@ img {
 
 .poiContent{
     height: 100%;
-    width: 30%;
+    width: 50%;
     float: left;
     border-left: 6px solid #cccccc;
+    padding-left: 2%;
+}
+
+.topnav{
+    padding: 1%;
 }

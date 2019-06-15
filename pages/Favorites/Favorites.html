@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title></title>
+    <link href="pages/Favorites/Favorites.css" rel="stylesheet">
 </head>
 <body>
 
@@ -28,8 +29,18 @@
 
     <div class="paragraphs">
         <div class="row" ng-repeat="point in points">
-            <div class="span4">
-                <div style="float:left">
+            <div class="poiContainer">
+                <div class="imgContainer">
+                    <a class="randomImage" href="#!POI" ng-click="showPoint(point)">
+                        <img style="float:left" ng-src="{{point.picture}}" alt=""/>
+                    </a>
+                </div>
+                <div class="poiContent">
+                    <a href="#!POI" ng-click="showPoint(point)">
+                        <div><h3>{{point.name}}</h3></div>
+                    </a>
+                    <p>Rank: {{point.rank*5/100}}%</p>
+                    <p>Category: {{point.category}}</p>
                     <button ng-show="loggedIn && isFavorite(point)" ng-click="removeFromFavorites(point)">
                         <span class="glyphicon glyphicon-heart-empty"></span>
                     </button>
@@ -37,15 +48,6 @@
                         <span class="glyphicon glyphicon-heart"></span>
                     </button>
                 </div>
-                <a class="randomImage" href="#!POI" ng-click="showPoint(point)">
-                    <img style="float:left" ng-src="{{point.picture}}" alt=""/>
-                </a>
-                <a class="randomImage" href="#!POI" ng-click="showPoint(point)">
-                    <div class="content-heading"><h3>{{point.name}}</h3></div>
-                </a>
-                <p>{{point.desc}}</p>
-                <p>Rank: {{point.rank*5/100}}%</p>
-                <p>Category: {{point.category}}</p>
                 <div style="clear:both"></div>
             </div>
         </div>
