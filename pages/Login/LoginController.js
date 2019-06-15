@@ -31,7 +31,7 @@ angular.module("myApp")
                         alert(response.statusText);
                     });
                     alert("Logged in!" );
-                    $location.path('/About');
+                    $location.path('/AfterLogin');
 
                 }
                 else{

@@ -38,7 +38,7 @@ app.config(function($routeProvider)  {
             controller : 'FavoritesController as FavoritesCtrl'
         })
         .when('/AfterLogin', {
-            templateUrl: 'pages/Favorites/AfterLogin.html',
+            templateUrl: 'pages/AfterLogin/AfterLogin.html',
             controller : 'AfterLoginController as AfterLoginCtrl'
         })
         // other
