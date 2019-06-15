@@ -1,6 +1,6 @@
 // Login controller
 angular.module("myApp")
-    .controller("LoginController", function ($window, $scope, $http, $rootScope, $filter) {
+    .controller("LoginController", function ($window, $scope, $http, $rootScope,$location) {
         self=this;
 
         $scope.submitLogin=function f() {
@@ -30,8 +30,9 @@ angular.module("myApp")
                     }, function errorCallback(response) {
                         alert(response.statusText);
                     });
-
                     alert("Logged in!" );
+                    $location.path('/About');
+
                 }
                 else{
                     alert("Error! " + response.data.message);
