@@ -17,11 +17,14 @@ angular.module("myApp")
             console.log(response.data);
         });
 
+        $scope.showRank = $window.sessionStorage.getItem("token")==null;
+
         $scope.$watch(function() {
             return $rootScope.point;
         }, function() {
             $scope.point = $rootScope.point;
             $scope.getReviews();
+            $scope.updateNumOfViewers();
         }, true);
 
         $scope.getReviews=function(){
@@ -29,11 +32,44 @@ angular.module("myApp")
                 method: 'GET',
                 url: 'http://localhost:3000/points/getLastTwoReviews/'+$rootScope.point.name,
             }).then(function successCallback(response) {
-                $scope.reviews=response.data.twoReviews;
+                var reviews=response.data.twoReviews;
+                //console.log("reviews: "+ $scope.reviews.length);
+                var uNameFirst = reviews[0].user;
+                var uRevFirst = reviews[0].review;
+                var uDateFirst = reviews[0].date;
+                let ansFirst="  User: "+uNameFirst+" Review: "+uRevFirst+" Date: "+uDateFirst;
+                $scope.reviewFirst=ansFirst;
+                let ansSec="";
+                $scope.reviewSecond=ansSec;
+                if (reviews.length==2){
+                    var uNameSec = reviews[1].user;
+                    var uRevSec = reviews[1].review;
+                    var uDateSec = reviews[1].date;
+                    let ansSec="  User: "+uNameSec+" Review: "+uRevSec+" Date: "+uDateSec;
+                    $scope.reviewSecond=ansSec;
+                }
+
             }, function errorCallback() {
                 $scope.reviews=[];
             });
         };
+
+
+        $scope.updateNumOfViewers=function(){
+            $http({
+                method: 'GET',
+                url: 'http://localhost:3000/points/getPoint/'+$rootScope.point.name,
+            }).then(function successCallback(response) {
+                console.log("num of viewers updated");
+            }, function errorCallback(response) {
+                console.log(response.data);
+            });
+
+        }
+
+
+
+
 
         // rank point
         $scope.rank=function (){
