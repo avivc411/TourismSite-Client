@@ -3,7 +3,6 @@ body {
     margin-top:18px
 }
 
-.container {
-    padding:33px;
-    background-color:#fff
+.pic {
+   width:30%;height:30%;  position: relative;left: 20%
 }
